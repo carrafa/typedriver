@@ -1,0 +1,31 @@
+body{
+  background-color: ghostwhite;
+  margin: 0;
+  text-align: center;
+}
+
+input{
+  width: 100%;
+}
+
+header{
+  background-color: darkred;
+  color: snow;
+  margin: 0;
+}
+
+input{
+  /*width: 90%;
+  margin-left: 5%;*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+.player{
+  position: relative;
+  display: block;
+  height: 1em;
+  width: 2em;
+}
