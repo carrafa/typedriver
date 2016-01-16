@@ -20,17 +20,19 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
+var allPlayers = {};
 
 
 // socket stuff
 io.on('connection', function(socket) {
   console.log('new connection');
   socket.on('new player', function(data) {
-    console.log('data');
+    var playerId = data.id;
+    allPlayers[playerId] = data;
     io.sockets.emit('global init player', data);
   })
   socket.on('update player', function(data) {
-    io.sockets.emit('update all players', data);
+    io.sockets.emit('update all players', allPlayers);
   });
 });
 

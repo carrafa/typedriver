@@ -15,28 +15,20 @@ initData = {
 }
 
 function renderPlayer(data) { //renders player on screen
-  $player = $('<div>').addClass('player').attr('id', id);
-  data = {
+  $player = $('<div>').addClass('player');
+  $player.css({
+    background: data.color,
     left: data.left,
     id: data.id,
     color: data.color
-  };
-  $player.css({
-    background: data.color
   });
   addPlayerClickListener($player); //just for testing, before i get the typing stuff going
   $('#race-track').append($player);
 };
 
-function initializePlayer(id) { //initializtion function.  used so every user can render the other players on connect.
-  data = {
-    left: 0,
-    id: id,
-    color: randomColor
-  };
-  socket.emit('new player', data);
+function initializePlayer(initData) { //initialization function.  used so every user can render the other players on connect.
+  socket.emit('new player', initData);
 }
-
 
 function addPlayerClickListener(el) { // just for testing until i get type stuff working
   el.on('click', function() {
@@ -66,20 +58,27 @@ function setKeyboardListener() { //workin on this.  not functional yet.
 };
 
 function updatePlayer(data) { //updates position for player.  will be constantly running
-  player = $('body').find('#' + data.id)
-  player.css({
-    'left': data.left + 'px'
+  $player = $('body').find('#' + data.id)
+  console.log($player);
+  $player.css({
+    left: data.left + 'px'
   });
 };
+
+function updateAllPlayers(allPlayers) {
+  for (i = 0; i < allPlayers.length; i++) {
+    data = allPlayers[i];
+    updatePlayer(data);
+  }
+}
 
 function globalListener() { //listens for socket messages
   var socket = io('localhost:' + port);
   socket.on('global init player', function(data) {
-    console.log(data);
     renderPlayer(data);
   })
-  socket.on('update all players', function(data) {
-    updatePlayer(data);
+  socket.on('update all players', function(allPlayerData) {
+    updateAllPlayers(allPlayerData);
   });
 };
 
