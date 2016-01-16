@@ -25,12 +25,12 @@ app.get('/', function(req, res) {
 // socket stuff
 io.on('connection', function(socket) {
   console.log('new connection');
-  socket.on('connection', function(data) {
+  socket.on('new player', function(data) {
     console.log('data');
-    io.sockets.emit('global init user', data);
+    io.sockets.emit('global init player', data);
   })
-  socket.on('user message to server', function(data) {
-    io.sockets.emit('globally sent message', data);
+  socket.on('update player', function(data) {
+    io.sockets.emit('update all players', data);
   });
 });
 

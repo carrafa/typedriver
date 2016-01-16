@@ -6,7 +6,7 @@ var socket = io.connect('localhost:' + port);
 
 var pos = 0; //starting point
 var id = Math.floor(Math.random() * 10000); //random id for now.  will fill with database id later
-var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16); //random color for now.  can let player choose color later
+var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16); //random color for now.  can let player choose color later.
 
 initData = {
   left: pos,
@@ -34,7 +34,7 @@ function initializePlayer(id) { //initializtion function.  used so every user ca
     id: id,
     color: randomColor
   };
-  socket.emit('connection', data);
+  socket.emit('new player', data);
 }
 
 
@@ -46,7 +46,7 @@ function addPlayerClickListener(el) { // just for testing until i get type stuff
       "id": id
     };
     $(this).css(data);
-    socket.emit('connection', data);
+    socket.emit('update player', data);
   })
 };
 
@@ -65,20 +65,20 @@ function setKeyboardListener() { //workin on this.  not functional yet.
   });
 };
 
-function updatePlayer(el, data) { //updates position for player.  will be constantly running
-  player = el.find('#' + data.id)
-  el.css({
+function updatePlayer(data) { //updates position for player.  will be constantly running
+  player = $('body').find('#' + data.id)
+  player.css({
     'left': data.left + 'px'
   });
 };
 
 function globalListener() { //listens for socket messages
   var socket = io('localhost:' + port);
-  socket.on('global init user', function(data) {
+  socket.on('global init player', function(data) {
     console.log(data);
     renderPlayer(data);
   })
-  socket.on('globally sent message', function(data) {
+  socket.on('update all players', function(data) {
     updatePlayer(data);
   });
 };
