@@ -21,7 +21,6 @@ function renderPlayer(data) { //renders player on screen
     left: data.left,
     color: data.color
   });
-  addPlayerClickListener($player); //just for testing, before i get the typing stuff going
   $('#race-track').append($player);
 };
 
@@ -29,37 +28,26 @@ function initializePlayer(initData) { //initialization function.  used so every 
   socket.emit('new player', initData);
 }
 
-function addPlayerClickListener(el) { // just for testing until i get type stuff working
-  el.on('click', function() {
-    pos = pos + 1;
-    data = {
-      "left": pos + "px",
-      "id": id
-    };
-    $(this).css(data);
-    socket.emit('update player', data);
-  })
-};
-
 function setKeyboardListener() { //workin on this.  not functional yet.
   $('body').on('keydown', 'input', function(e) {
-    e.preventDefault();
-    pos = pos + 1;
-    data = {
-      "left": pos + "px",
-      "id": id
-    };
-    console.log(data.left, data.id);
+    if (sentenceChecker()) {;
+      pos = pos + 1;
+      data = {
+        "left": pos + "px",
+        "id": id
+      };
+    }
     socket.emit('update player', data);
   });
 };
 
-function updatePlayer(data) { //updates position for player.  will be constantly running
-  var $player = $('#' + data.id)
-    // console.log($player, data.left);
-  $player.css({
-    left: data.left + 'px'
-  });
+function sentenceChecker() { //check sentence
+  var sentence = $('#sentence').text();
+  var playerInput = $('#text-box').val();
+  var match = sentence.substr(0, playerInput.length);
+  if (playerInput === match) {
+    return true;
+  }
 };
 
 function updateAllPlayers(allPlayers) {

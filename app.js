@@ -20,7 +20,7 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-// game variables and stuff,  should probbably move this and socket stuff to another file.  right now it's just local variables here on the server, but would be stored in database eventually.
+// game variables and stuff,  should probably move this and socket stuff to another file.  right now it's just local variables here on the server, but will be stored in database eventually.
 var allPlayers = [];
 
 Array.prototype.getIndexBy = function(name, value) {
