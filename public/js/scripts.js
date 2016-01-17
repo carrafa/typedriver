@@ -5,7 +5,7 @@ var port = 8080; //does this have to be hidden in .env?
 var socket = io.connect('localhost:' + port);
 
 var pos = 0; //starting point
-var id = Math.floor(Math.random() * 10000); //random id for now.  will fill with database id later
+var id = Math.floor(Math.random() * 100); //random id for now.  will fill with database id later
 var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16); //random color for now.  can let player choose color later.
 
 initData = {
@@ -15,11 +15,10 @@ initData = {
 }
 
 function renderPlayer(data) { //renders player on screen
-  $player = $('<div>').addClass('player');
+  $player = $('<div>').addClass('player').attr('id', data.id);
   $player.css({
     background: data.color,
     left: data.left,
-    id: data.id,
     color: data.color
   });
   addPlayerClickListener($player); //just for testing, before i get the typing stuff going
@@ -58,25 +57,23 @@ function setKeyboardListener() { //workin on this.  not functional yet.
 };
 
 function updatePlayer(data) { //updates position for player.  will be constantly running
-  $player = $('body').find('#' + data.id)
-  console.log($player);
+  var $player = $('#' + data.id)
+    // console.log($player, data.left);
   $player.css({
     left: data.left + 'px'
   });
 };
 
 function updateAllPlayers(allPlayers) {
+  $('#race-track').empty();
   for (i = 0; i < allPlayers.length; i++) {
     data = allPlayers[i];
-    updatePlayer(data);
+    renderPlayer(data);
   }
-}
+};
 
 function globalListener() { //listens for socket messages
   var socket = io('localhost:' + port);
-  socket.on('global init player', function(data) {
-    renderPlayer(data);
-  })
   socket.on('update all players', function(allPlayerData) {
     updateAllPlayers(allPlayerData);
   });

@@ -20,19 +20,30 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-var allPlayers = {};
+// game variables and stuff,  should probbably move this and socket stuff to another file.  right now it's just local variables here on the server, but would be stored in database eventually.
+var allPlayers = [];
 
+Array.prototype.getIndexBy = function(name, value) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i][name] == value) {
+      return i;
+    }
+  }
+  return -1;
+}
 
 // socket stuff
 io.on('connection', function(socket) {
   console.log('new connection');
-  socket.on('new player', function(data) {
-    var playerId = data.id;
-    allPlayers[playerId] = data;
-    io.sockets.emit('global init player', data);
+  socket.on('new player', function(data) { //new player signs in
+    allPlayers.push(data); //adds it to local array of players
+    io.sockets.emit('update all players', allPlayers); //sends new data to everyone
   })
   socket.on('update player', function(data) {
-    io.sockets.emit('update all players', allPlayers);
+    //insert updated player data in to allPlayers array (database eventually? or maybe just database after the game is over)
+    index = allPlayers.getIndexBy("id", data.id); //find that player
+    allPlayers[index].left = data.left; //update position
+    io.sockets.emit('update all players', allPlayers); //send new data out to everyone
   });
 });
 
