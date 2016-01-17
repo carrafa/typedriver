@@ -9,8 +9,8 @@ var id = Math.floor(Math.random() * 100); //random id for now.  will fill with d
 var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16); //random color for now.  can let player choose color later.
 
 initData = {
-  left: pos,
   id: id,
+  left: pos,
   color: randomColor
 }
 
