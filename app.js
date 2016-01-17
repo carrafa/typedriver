@@ -36,6 +36,8 @@ Array.prototype.getIndexBy = function(name, value) {
 io.on('connection', function(socket) {
   console.log('new connection');
   socket.on('new player', function(data) { //new player signs in
+    console.log('connected: ', socket.conn.id);
+    data.socket = socket.conn.id;
     allPlayers.push(data); //adds it to local array of players
     io.sockets.emit('update all players', allPlayers); //sends new data to everyone
   })
@@ -45,7 +47,17 @@ io.on('connection', function(socket) {
     allPlayers[index].left = data.left; //update position
     io.sockets.emit('update all players', allPlayers); //send new data out to everyone
   });
+  socket.on('disconnect', function(data) {
+    socket = socket.conn.id
+      // console.log(socket);
+    index = allPlayers.getIndexBy("socket", socket); //find that
+    // console.log(allPlayers);
+    // console.log('disconnected: ' + socket + 'index: ' + index);
+    allPlayers.splice(index, 1);
+    io.emit('user disconnected');
+  });
 });
+
 
 
 // listen up

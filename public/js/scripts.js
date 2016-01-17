@@ -50,9 +50,7 @@ function setKeyboardListener() { //workin on this.  not functional yet.
       "id": id
     };
     console.log(data.left, data.id);
-    el = $(this);
-    updatePlayer(el, data);
-    socket.emit('user', data);
+    socket.emit('update player', data);
   });
 };
 
