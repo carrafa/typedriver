@@ -9,6 +9,24 @@
 
     <header>
       <h1>typist</h1>
+      <div id="login-container">
+        <div class="form-container">
+        <h5>sign up</h5>
+        <form id="signup">
+          <input id="username" placeholder="username"></input>
+          <input id="password" placeholder="password"></input>
+          <input type="submit">
+        </form>
+        </div>
+        <div class="form-container">
+          <h5>log in</h5>
+          <form id="login">
+            <input id="username" placeholder="username"></input>
+            <input id="password" placeholder="password"></input>
+            <input type="submit">
+          </form>
+        </div>
+      </div>
       <input id="text-box"></input>
     </header>
     <div id="sentence">i am a default sentence</div>
@@ -18,6 +36,7 @@
 
   <script src="/socket.io/socket.io.js" charset="utf-8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="/js/login.js" charset="utf-8"></script>
   <script src="/js/scripts.js" charset="utf-8"></script>
   </body>
 </html>

@@ -3,6 +3,7 @@ require('dotenv').load();
 var app = express();
 var server = require('http').Server(app);
 var socketIo = require('socket.io');
+var request = require('request');
 var io = socketIo(server);
 
 
@@ -31,6 +32,23 @@ Array.prototype.getIndexBy = function(name, value) {
   }
   return -1;
 }
+
+
+
+function shakeIt() {
+  request(
+    "http://ShakeItSpeare.com/api/sentence",
+    function(err, response, body) {
+      return body;
+    }
+  );
+}
+
+sentence = shakeIt();
+
+
+console.log(shakeIt);
+
 
 // socket stuff
 io.on('connection', function(socket) {
