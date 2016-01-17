@@ -28,7 +28,7 @@ function initializePlayer(initData) { //initialization function.  used so every 
   socket.emit('new player', initData);
 }
 
-function setKeyboardListener() { //workin on this.  not functional yet.
+function setKeyboardListener() { //listens for keyboard input
   $('body').on('keydown', 'input', function(e) {
     if (sentenceChecker()) {;
       pos = pos + 1;
@@ -41,7 +41,7 @@ function setKeyboardListener() { //workin on this.  not functional yet.
   });
 };
 
-function sentenceChecker() { //check sentence
+function sentenceChecker() { //checks sentence
   var sentence = $('#sentence').text();
   var playerInput = $('#text-box').val();
   var match = sentence.substr(0, playerInput.length);
@@ -50,7 +50,7 @@ function sentenceChecker() { //check sentence
   }
 };
 
-function updateAllPlayers(allPlayers) {
+function updateAllPlayers(allPlayers) { //empties racetrack and updates with new player data
   $('#race-track').empty();
   for (i = 0; i < allPlayers.length; i++) {
     data = allPlayers[i];
