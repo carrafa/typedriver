@@ -75,6 +75,10 @@ function globalListener() { //listens for socket messages
   socket.on('update all players', function(allPlayerData) {
     updateAllPlayers(allPlayerData);
   });
+  socket.on('user disconnected', function(id) {
+    console.log(id);
+    $('#', id).remove();
+  });
 };
 
 $(function() { //start 'er upppppp

@@ -48,13 +48,18 @@ io.on('connection', function(socket) {
     io.sockets.emit('update all players', allPlayers); //send new data out to everyone
   });
   socket.on('disconnect', function(data) {
+    console.log("got a disconnect!");
+    console.log("pre: ", allPlayers);
     socket = socket.conn.id
-      // console.log(socket);
-    index = allPlayers.getIndexBy("socket", socket); //find that
-    // console.log(allPlayers);
-    // console.log('disconnected: ' + socket + 'index: ' + index);
-    allPlayers.splice(index, 1);
-    io.emit('user disconnected');
+    index = allPlayers.getIndexBy("socket", socket); //find that player
+    if (allPlayers[index]) {
+      var player = allPlayers[index];
+      var id = player.id;
+      console.log('id: ' + id)
+      allPlayers.splice(index, 1);
+      console.log("post: ", allPlayers);
+    };
+    io.emit('user disconnected', id);
   });
 });
 
