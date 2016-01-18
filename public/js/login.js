@@ -1,18 +1,7 @@
 console.log('hello, i am login.js');
 
-function closeModal(){
+function toggleModal(){
   $('#modal').toggle();
-};
-
-
-function renderPlayer(data) { //renders player on screen
-  $player = $('<div>').addClass('player').attr('id', data.id);
-  $player.css({
-    background: data.color,
-    left: data.left,
-    color: data.color
-  });
-  $('#race-track').append($player);
 };
 
 // Send request to create a user
@@ -48,12 +37,16 @@ function setCreateUserFormHandler(){
     // Create a new user
     createUser(userData, function(user){
       console.log(user);
-      // updateUsersAndView(); // Update the entire view
     });
-    // Render a player
-    renderPlayer(userData);
 
-    closeModal();
+    // Login new user
+    logInUser(usernameText, passwordText, function(data){
+
+      $.cookie('token', data.token);  // save the token as a cookie
+      console.log('Token:', $.cookie('token') );
+
+      toggleModal();
+    });
 
 
   });
@@ -116,12 +109,10 @@ function setLogInFormHandler(){
     logInUser(usernameText, passwordText, function(data){
 
       $.cookie('token', data.token);  // save the token as a cookie
-
       console.log('Token:', $.cookie('token') );
-      // updateUsersAndView();
-      renderPlayer(userData);
 
-      closeModal();
+      toggleModal();
+
     });
 
   });
@@ -137,16 +128,6 @@ function getAllUsers(callback){
   });
 }
 
-// function renderUsers(usersArray){
-//   var source = $("#users-template").html();  // Go find the template
-//   var template = Handlebars.compile(source); // Create a template function
-//   var context = {users: usersArray};  // What data will i pass the template?
-//   var usersElement = template( context ); // Generate HTML
-//   return usersElement;
-// }
-
-
-//
 function updateUsersAndView(){
 
   getAllUsers(function(users){
@@ -168,7 +149,4 @@ $(function(){
   setUpdateUserFormHandler();
   setCreateUserFormHandler();
   setLogInFormHandler();
-
-  // updateUsersAndView();
-
 });
