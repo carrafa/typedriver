@@ -80,17 +80,24 @@ function updateAllPlayers(allPlayers) { // empties racetrack and updates with ne
 };
 
 function globalListener() { // listens for socket messages
+
   socket.on('update all players', function(allPlayerData) {
     updateAllPlayers(allPlayerData);
   });
+
   socket.on('user disconnected', function(id, allPlayerData) {
     console.log(id);
     $('#', id).remove();
     updateAllPlayers(allPlayerData);
   });
+
   socket.on('start race', function() {
     $('#status').append($('<li>').text('race tiiiime'));
     startRace();
+  })
+
+  socket.on('room full', function() {
+    $('#status').append($('<li>').text('room is full! now you have to wait'));
   })
 };
 
