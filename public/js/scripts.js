@@ -17,9 +17,9 @@ initData = {
 function renderPlayer(data) { //renders player on screen
   $player = $('<div>').addClass('player').attr('id', data.id);
   $player.css({
-    background: data.color,
-    left: data.left,
-    color: data.color
+    "background-color": data.color,
+    "left": data.left,
+    "color": data.color
   });
   $('#race-track').append($player);
 };

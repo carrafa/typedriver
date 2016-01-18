@@ -3,7 +3,7 @@ require('dotenv').load();
 var app = express();
 var server = require('http').Server(app);
 var socketIo = require('socket.io');
-var request = require('request');
+
 var io = socketIo(server);
 
 // middleware
