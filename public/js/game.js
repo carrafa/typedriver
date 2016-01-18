@@ -19,7 +19,7 @@ initData = { //initialization data to render player.
 
 var raceStart = false;
 
-function startRace() {
+function startRace() { //starts the countdown, then starts the race
   var intervalID = window.setInterval(function() {
     console.log(countdown);
     $('#timer').text(countdown);
@@ -38,7 +38,7 @@ function startRace() {
 };
 
 
-function startRaceClock() {
+function startRaceClock() { //starts the clock, duh
   clockID = window.setInterval(function() {
     c++;
     if (c === 100) {

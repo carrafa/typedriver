@@ -1,23 +1,25 @@
 console.log('hello, i am login.js');
 
-function toggleModal(){
+function toggleModal() {
   $('#modal').toggle();
 };
 
 // Send request to create a user
-function createUser(userData, callback){
+function createUser(userData, callback) {
   $.ajax({
     method: 'post',
     url: '/api/users',
-    data: {user: userData},
-    success: function(data){
+    data: {
+      user: userData
+    },
+    success: function(data) {
       callback(data);
     }
   });
 }
 
-function setCreateUserFormHandler(){
-  $('form#signup').on('submit', function(e){
+function setCreateUserFormHandler() {
+  $('form#signup').on('submit', function(e) {
     e.preventDefault();
 
     // Obtain the username from form
@@ -31,19 +33,22 @@ function setCreateUserFormHandler(){
     passwordField.val('');
 
     // Organize the data to be sent
-    var userData = {username: usernameText, password: passwordText};
+    var userData = {
+      username: usernameText,
+      password: passwordText
+    };
     console.log('userdata', userData);
 
     // Create a new user
-    createUser(userData, function(user){
+    createUser(userData, function(user) {
       console.log(user);
     });
 
     // Login new user
-    logInUser(usernameText, passwordText, function(data){
+    logInUser(usernameText, passwordText, function(data) {
 
-      $.cookie('token', data.token);  // save the token as a cookie
-      console.log('Token:', $.cookie('token') );
+      $.cookie('token', data.token); // save the token as a cookie
+      console.log('Token:', $.cookie('token'));
 
       toggleModal();
     });
@@ -52,28 +57,32 @@ function setCreateUserFormHandler(){
   });
 }
 
-function updateUser(userData, callback){
+function updateUser(userData, callback) {
   $.ajax({
     method: 'patch',
     url: '/api/users',
-    data: {user: userData},
-    success: function(data){
+    data: {
+      user: userData
+    },
+    success: function(data) {
       callback(data);
     }
   });
 }
 
-function setUpdateUserFormHandler(){
-  $('form#update-time').on('submit', function(e){
+function setUpdateUserFormHandler() {
+  $('form#update-time').on('submit', function(e) {
     e.preventDefault();
 
     var username = $(this).find('input[name="username"]');
     var usernameText = username.val();
     bioField.val('');
 
-    var userData = {username: usernameText};
+    var userData = {
+      username: usernameText
+    };
 
-    updateUser(userData, function(user){
+    updateUser(userData, function(user) {
       console.log(user);
       // updateUsersAndView();
     });
@@ -81,19 +90,23 @@ function setUpdateUserFormHandler(){
   });
 }
 
-function logInUser(usernameAttempt, passwordAttempt, callback){
+function logInUser(usernameAttempt, passwordAttempt, callback) {
   $.ajax({
     method: 'post',
     url: '/api/users/authenticate',
-    data: {username: usernameAttempt, password: passwordAttempt},
-    success: function(data){
+    data: {
+      username: usernameAttempt,
+      password: passwordAttempt
+    },
+    success: function(data) {
       callback(data);
+      socket.emit('new player', initData);
     }
   });
 }
 
-function setLogInFormHandler(){
-  $('form#login').on('submit', function(e){
+function setLogInFormHandler() {
+  $('form#login').on('submit', function(e) {
     e.preventDefault();
 
     var usernameField = $(this).find('input[name="username"]');
@@ -104,12 +117,18 @@ function setLogInFormHandler(){
     var passwordText = passwordField.val();
     passwordField.val('');
 
-    var userData = {username: usernameText, password: passwordText};
+    var userData = {
+      username: usernameText,
+      password: passwordText
+    };
 
-    logInUser(usernameText, passwordText, function(data){
+    logInUser(usernameText, passwordText, function(data) {
 
-      $.cookie('token', data.token);  // save the token as a cookie
-      console.log('Token:', $.cookie('token') );
+      $.cookie('token', data.token); // save the token as a cookie
+
+      console.log('Token:', $.cookie('token'));
+      // updateUsersAndView();
+      renderPlayer(userData);
 
       toggleModal();
 
@@ -118,25 +137,25 @@ function setLogInFormHandler(){
   });
 }
 
-function getAllUsers(callback){
+function getAllUsers(callback) {
   $.ajax({
     url: '/api/users',
-    success: function(data){
+    success: function(data) {
       var users = data.users || [];
       callback(users);
     }
   });
 }
 
-function updateUsersAndView(){
+function updateUsersAndView() {
 
-  getAllUsers(function(users){
+  getAllUsers(function(users) {
     $('section#users').empty();
     var usersElement = renderUsers(users);
     $('section#users').append(usersElement);
   });
 
-  if($.cookie('token')){
+  if ($.cookie('token')) {
     $('.user-only').show();
   } else {
     $('.user-only').hide();
@@ -145,7 +164,7 @@ function updateUsersAndView(){
 }
 
 
-$(function(){
+$(function() {
   setUpdateUserFormHandler();
   setCreateUserFormHandler();
   setLogInFormHandler();

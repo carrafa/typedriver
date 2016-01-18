@@ -69,6 +69,17 @@ form {
   margin: 0;
 }
 
+#finish-line{
+  display: inline-block;
+  background-image: url('../images/check.png');
+  width: 40px;
+}
+
+.square{
+  width: 20px;
+  height: 20px;
+}
+
 #status{
   position: relative;
   display: inline-block;

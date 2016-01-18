@@ -1,39 +1,4 @@
-// console.log('hello, i am scripts.js');
-//
-// var port = 8080; //does this have to be hidden in .env?
-//
-// var socket = io.connect('localhost:' + port);
-//
-// var pos = 0; // starting point
-// var speed = 1; //speed.  starts at 1.  could change depending on how fast the game will be
-// var id = Math.floor(Math.random() * 100); //random id for now.  will fill with database id later
-// var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16); //random color for now.  can let player choose color later.
-// var countdown = 5;
-//
-// initData = {
-//   id: id,
-//   left: pos,
-//   color: randomColor
-// }
-//
-// var raceStart = false;
-//
-// function startRace() {
-//   var intervalID = window.setInterval(function() {
-//     console.log(countdown);
-//     $('#timer').text(countdown);
-//     if (countdown === 0) {
-//       $('#timer').text('go!');
-//       raceStart = true;
-//     }
-//     if (countdown < 0) {
-//       $('#timer').text('');
-//       clearInterval(intervalID);
-//       countdown = 5;
-//     }
-//     countdown--;
-//   }, 1000)
-// }
+console.log('hello, i am scripts.js');
 
 var port = 8080; //does this have to be hidden in .env?
 
@@ -47,7 +12,10 @@ function renderPlayer(data) { //renders player on screen
     "color": data.color
   });
   $('#race-track').append($player);
+  $square = $('<div>').addClass('square');
 };
+
+
 
 function initializePlayer(initData) { //initialization function.  used so every user can render the other players on connect.
   socket.emit('new player', initData);
@@ -55,7 +23,7 @@ function initializePlayer(initData) { //initialization function.  used so every 
 
 function setKeyboardListener() { //listens for keyboard input
   $('body').on('keydown', 'input', function(e) {
-    if (raceStart && sentenceChecker()) {;
+    if (raceStart && sentenceChecker()) {
       pos = pos + speed;
       data = {
         "left": pos + "px",
@@ -75,12 +43,19 @@ function sentenceChecker() { // checks sentence
   }
 };
 
+function renderFinishLine(numOfPlayers) {
+  $('#finish-line').css({
+    height: numOfPlayers * 20
+  })
+}
+
 function updateAllPlayers(allPlayers) { // empties racetrack and updates with new player data
   $('#race-track').empty();
   for (i = 0; i < allPlayers.length; i++) {
     data = allPlayers[i];
     renderPlayer(data);
   }
+  renderFinishLine(allPlayers.length);
 };
 
 function globalListener() { // listens for socket messages
