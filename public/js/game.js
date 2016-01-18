@@ -3,7 +3,7 @@ console.log('hello, i am game.js');
 
 
 var pos = 0; // starting point
-var speed = 1; //speed.  starts at 1.  could change depending on how fast the game will be
+var speed = 1; // speed.  starts at 1.  could change depending on how fast the game will be
 var m = 0; // minutes on clock
 var s = 0; // seconds on clock
 var c = 0; // centiseconds on clock
@@ -20,6 +20,7 @@ initData = { //initialization data to render player.
 var raceStart = false;
 
 function startRace() { //starts the countdown, then starts the race
+  setSpeed();
   var intervalID = window.setInterval(function() {
     console.log(countdown);
     $('#timer').text(countdown);

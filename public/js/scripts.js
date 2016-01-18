@@ -15,7 +15,10 @@ function renderPlayer(data) { //renders player on screen
   $square = $('<div>').addClass('square');
 };
 
-
+function setSpeed() {
+  var length = $('#sentence').text().length
+  speed = 100 / length;
+}
 
 function initializePlayer(initData) { //initialization function.  used so every user can render the other players on connect.
   socket.emit('new player', initData);
@@ -26,7 +29,7 @@ function setKeyboardListener() { //listens for keyboard input
     if (raceStart && sentenceChecker()) {
       pos = pos + speed;
       data = {
-        "left": pos + "px",
+        "left": pos + "%",
         "id": id
       };
     }
