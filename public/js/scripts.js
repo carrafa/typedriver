@@ -14,19 +14,19 @@ initData = {
   color: randomColor
 }
 
-// function renderPlayer(data) { //renders player on screen
-//   $player = $('<div>').addClass('player').attr('id', data.id);
-//   $player.css({
-//     "background-color": data.color,
-//     "left": data.left,
-//     "color": data.color
-//   });
-//   $('#race-track').append($player);
-// };
+function renderPlayer(data) { //renders player on screen
+  $player = $('<div>').addClass('player').attr('id', data.id);
+  $player.css({
+    "background-color": data.color,
+    "left": data.left,
+    "color": data.color
+  });
+  $('#race-track').append($player);
+};
 
-// function initializePlayer(initData) { //initialization function.  used so every user can render the other players on connect.
-//   socket.emit('new player', initData);
-// }
+function initializePlayer(initData) { //initialization function.  used so every user can render the other players on connect.
+  socket.emit('new player', initData);
+}
 
 function setKeyboardListener() { //listens for keyboard input
   $('body').on('keydown', 'input', function(e) {
@@ -70,7 +70,7 @@ function globalListener() { // listens for socket messages
 };
 
 $(function() { // start 'er upppppp
-  // initializePlayer(initData);
+  initializePlayer(initData);
   setKeyboardListener();
   globalListener();
 });
