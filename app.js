@@ -19,6 +19,7 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
+// sockets
 var socketHandler = require('./lib/sockets');
 io.on('connection', function(socket) {
   socketHandler(socket, io);
