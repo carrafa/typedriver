@@ -1,39 +1,43 @@
-console.log('hello, i am scripts.js');
+// console.log('hello, i am scripts.js');
+//
+// var port = 8080; //does this have to be hidden in .env?
+//
+// var socket = io.connect('localhost:' + port);
+//
+// var pos = 0; // starting point
+// var speed = 1; //speed.  starts at 1.  could change depending on how fast the game will be
+// var id = Math.floor(Math.random() * 100); //random id for now.  will fill with database id later
+// var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16); //random color for now.  can let player choose color later.
+// var countdown = 5;
+//
+// initData = {
+//   id: id,
+//   left: pos,
+//   color: randomColor
+// }
+//
+// var raceStart = false;
+//
+// function startRace() {
+//   var intervalID = window.setInterval(function() {
+//     console.log(countdown);
+//     $('#timer').text(countdown);
+//     if (countdown === 0) {
+//       $('#timer').text('go!');
+//       raceStart = true;
+//     }
+//     if (countdown < 0) {
+//       $('#timer').text('');
+//       clearInterval(intervalID);
+//       countdown = 5;
+//     }
+//     countdown--;
+//   }, 1000)
+// }
 
 var port = 8080; //does this have to be hidden in .env?
 
 var socket = io.connect('localhost:' + port);
-
-var pos = 0; // starting point
-var speed = 1; //speed.  starts at 1.  could change depending on how fast the game will be
-var id = Math.floor(Math.random() * 100); //random id for now.  will fill with database id later
-var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16); //random color for now.  can let player choose color later.
-var countdown = 5;
-
-initData = {
-  id: id,
-  left: pos,
-  color: randomColor
-}
-
-var raceStart = false;
-
-function startRace() {
-  var intervalID = window.setInterval(function() {
-    console.log(countdown);
-    $('#timer').text(countdown);
-    if (countdown === 0) {
-      $('#timer').text('go!');
-      raceStart = true;
-    }
-    if (countdown < 0) {
-      $('#timer').text('');
-      clearInterval(intervalID);
-      countdown = 5;
-    }
-    countdown--;
-  }, 1000)
-}
 
 function renderPlayer(data) { //renders player on screen
   $player = $('<div>').addClass('player').attr('id', data.id);
