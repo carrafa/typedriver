@@ -6,27 +6,29 @@
     <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
+    <div id="modal">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h4>Log In</h4>
+          <form id="login">
+         <input type="text" name="username" placeholder="Username">
+         <input type="text" name="password" placeholder="Password">
+         <br>
+         <input type="submit" name="submit" value="Submit">
 
+         <h4 class="signupText">Sign Up</h4>
+          </form>
+          <form id="signup">
+         <input type="text" name="username" placeholder="Username">
+         <input type="text" name="password" placeholder="Password">
+         <br>
+         <input type="submit" name="submit" value="Submit">
+          </form>
+          </div>
+        </div>
+    </div>
     <header>
       <h1>typist</h1>
-      <div id="login-container">
-        <div class="form-container">
-        <h5>sign up</h5>
-        <form id="signup">
-          <input id="username" placeholder="username"></input>
-          <input id="password" placeholder="password"></input>
-          <input type="submit">
-        </form>
-        </div>
-        <div class="form-container">
-          <h5>log in</h5>
-          <form id="login">
-            <input id="username" placeholder="username"></input>
-            <input id="password" placeholder="password"></input>
-            <input type="submit">
-          </form>
-        </div>
-      </div>
       <input id="text-box"></input>
     </header>
     <div id="sentence">i am a default sentence.  you will only win if you type me in correctly.  EXACTLY correctly.  EXACTOMUNDO.  NO MISTAKES.  BLDKjdkjlJF.</div>
@@ -36,6 +38,7 @@
 
   <script src="/socket.io/socket.io.js" charset="utf-8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js" charset="utf-8"></script>
   <script src="/js/login.js" charset="utf-8"></script>
   <script src="/js/scripts.js" charset="utf-8"></script>
   </body>
