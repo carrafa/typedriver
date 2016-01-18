@@ -41,7 +41,7 @@ function setKeyboardListener() { //listens for keyboard input
   });
 };
 
-function sentenceChecker() { //checks sentence
+function sentenceChecker() { // checks sentence
   var sentence = $('#sentence').text();
   var playerInput = $('#text-box').val();
   var match = sentence.substr(0, playerInput.length);
@@ -50,7 +50,7 @@ function sentenceChecker() { //checks sentence
   }
 };
 
-function updateAllPlayers(allPlayers) { //empties racetrack and updates with new player data
+function updateAllPlayers(allPlayers) { // empties racetrack and updates with new player data
   $('#race-track').empty();
   for (i = 0; i < allPlayers.length; i++) {
     data = allPlayers[i];
@@ -58,9 +58,9 @@ function updateAllPlayers(allPlayers) { //empties racetrack and updates with new
   }
 };
 
-function globalListener() { //listens for socket messages
-  var socket = io('localhost:' + port);
+function globalListener() { // listens for socket messages
   socket.on('update all players', function(allPlayerData) {
+    console.log(allPlayerData);
     updateAllPlayers(allPlayerData);
   });
   socket.on('user disconnected', function(id) {
@@ -69,7 +69,7 @@ function globalListener() { //listens for socket messages
   });
 };
 
-$(function() { //start 'er upppppp
+$(function() { // start 'er upppppp
   initializePlayer(initData);
   setKeyboardListener();
   globalListener();
