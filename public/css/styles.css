@@ -36,6 +36,15 @@ ul{
   display: inline-block;
 }
 
+.container{
+  min-width: 600px;
+}
+
+#race-track-container{
+  display: inline-block;
+  width: 82%;
+}
+
 #modal {
   top: 0;
   left: 0;
@@ -65,8 +74,9 @@ form {
 #race-track{
   position: relative;
   display: inline-block;
-  width: 1000px;
+  width: 90%;
   margin: 0;
+  text-align: left;
 }
 
 #finish-line{
@@ -75,11 +85,9 @@ form {
   width: 40px;
 }
 
-.square{
-  width: 20px;
-  height: 20px;
+#race-clock{
+  display: block;
 }
-
 #status{
   position: relative;
   display: inline-block;
@@ -90,6 +98,7 @@ form {
   border-radius: 5px;
   font-weight: bold;
   padding: 5px;
+  width: 11%;
 }
 
 #status li:nth-child(even){
