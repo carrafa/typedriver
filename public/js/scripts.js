@@ -12,27 +12,23 @@ function renderPlayer(data) { //renders player on screen
     "color": data.color
   });
   $('#race-track').append($player);
-  $square = $('<div>').addClass('square');
 };
-
-function setSpeed() {
-  var length = $('#sentence').text().length
-  speed = 100 / length;
-}
 
 function initializePlayer(initData) { //initialization function.  used so every user can render the other players on connect.
   socket.emit('new player', initData);
 }
 
 function setKeyboardListener() { //listens for keyboard input
-  $('body').on('keydown', 'input', function(e) {
-    if (raceStart && sentenceChecker()) {
-      pos = pos + speed;
+  $('body').on('keyup', 'input', function(e) {
+    pos = (sentenceChecker() * 100) || pos;
+    if (raceStart) {
       data = {
         "left": pos + "%",
-        "id": id
+        "id": id,
+        "color": randomColor
       };
     }
+    updateOnePlayer($('#' + id), data);
     socket.emit('update player', data);
     console.log(pos);
   });
@@ -42,8 +38,12 @@ function sentenceChecker() { // checks sentence
   var sentence = $('#sentence').text();
   var playerInput = $('#text-box').val();
   var match = sentence.substr(0, playerInput.length);
+  console.log('match: ', match);
+  console.log('playerInput: ', playerInput);
   if (playerInput === match) {
-    return true;
+    return playerInput.length / sentence.length;
+  } else {
+    return false
   }
 };
 
@@ -51,6 +51,12 @@ function renderFinishLine(numOfPlayers) {
   $('#finish-line').css({
     height: numOfPlayers * 20
   })
+}
+
+function updateOnePlayer(player, data) {
+  player.remove();
+  renderPlayer(data);
+  console.log('one player updated');
 }
 
 function updateAllPlayers(allPlayers) { // empties racetrack and updates with new player data

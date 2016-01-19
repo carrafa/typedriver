@@ -31,7 +31,6 @@ function startRace(sentence) { //starts the countdown, then starts the race
       $('#timer').text('');
       clearInterval(intervalID);
       $('#sentence').text(sentence);
-      setSpeed();
       startRaceClock();
       countdown = 5;
     }
