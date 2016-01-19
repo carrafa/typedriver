@@ -23,7 +23,9 @@ var cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 var loadUser = require('./middleware/loadUser');
 app.use(loadUser);
@@ -35,6 +37,10 @@ app.use('/api/users', users);
 app.get('/', function(req, res) {
   res.render('index');
 });
+
+//api route
+var finishers = require('./routes/finishers');
+app.use('/api/finishers', finishers);
 
 // sockets
 var socketHandler = require('./lib/sockets');

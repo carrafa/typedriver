@@ -96,23 +96,23 @@ function globalListener() { // listens for socket messages
   socket.on('start race', function(sentence) {
     $('#status').append($('<li>').text('race tiiiime'));
     startRace(sentence);
-  })
+  });
 
   socket.on('room full', function() {
     console.log('room fulllll!!!');
     $('#status').append($('<li>').text('room is full! now you have to wait'));
-  })
+  });
 
   socket.on('room', function(data) {
     initData.room = data.room
     room = data.room
     console.log(room);
     initializePlayer(initData);
-  })
+  });
 
   socket.on('disconnect', function(data) {
     data.room = initData.room;
-  })
+  });
 };
 
 $(function() { // start 'er upppppp
