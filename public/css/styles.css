@@ -4,6 +4,16 @@ body{
   text-align: center;
 }
 
+nav ul {
+    list-style: none outside none;
+    display: block;
+}
+nav li {
+    line-height: 18px;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
 input{
   width: 100%;
   color: black;
@@ -49,6 +59,7 @@ nav a{
   width: 82%;
 }
 
+/*------ Modal -----*/
 #modal {
   top: 0;
   left: 0;
@@ -71,6 +82,7 @@ form {
   width: 80%;
   margin: 0 auto;
 }
+
 .signupText {
   margin-top: 40px;
 }

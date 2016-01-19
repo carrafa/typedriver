@@ -1,12 +1,15 @@
 // modules
 var mongoose = require('mongoose');
+var uniqueValidator = require('mongoose-unique-validator');
 var bcrypt = require('bcryptjs');
 var crypto = require('crypto');
 
 // schemas
 var UserSchema = mongoose.Schema({
 	username: {
-		type: String
+		type: String,
+		unique: true,
+		uniqueCaseInsensitive: true
 	},
 	password: {
 		type: String
@@ -17,6 +20,8 @@ var UserSchema = mongoose.Schema({
 }, {
 	timestamps: true
 });
+
+UserSchema.plugin(uniqueValidator, { message: 'This username is already in use, please choose another!' });
 
 //----- model methods -----//
 

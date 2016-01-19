@@ -121,7 +121,7 @@ function setLogInFormHandler() {
 //---------- Logout ----------
 //----------------------------
 function setLogOutListener(){
-  $('form#log-out').on('submit', function(e){
+  $('form#logout').on('submit', function(e){
     console.log('working');
     e.preventDefault();
     $.removeCookie('token');
@@ -135,6 +135,7 @@ function setLogOutListener(){
 $(function() {
   checkCookie();
   setSignUpFormHandler();
+  alertUser();
   setLogInFormHandler();
   setLogOutListener();
 });

@@ -19,7 +19,13 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
   var newUser = new User(req.body.user);
   newUser.save(function(err, databaseUser) {
-    res.json(databaseUser);
+    console.log(newUser);
+    console.log(err);
+    if (err) {
+      res.json(err.errors);
+    }else {
+      res.json(databaseUser);
+    }
   });
 });
 
