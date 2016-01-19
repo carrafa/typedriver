@@ -41,6 +41,7 @@ function setKeyboardListener() { //listens for keyboard input
       raceStart = false;
       console.log('emitted: ', data);
       pos = 0;
+      stopRaceClock();
     }
   });
 };
