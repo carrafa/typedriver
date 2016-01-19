@@ -23,7 +23,7 @@ router.post('/', function(req, res) {
   });
 });
 
-// update
+// update - may be not be functional?
 router.patch('/', function(req, res) {
   if (req.user) {
     req.user.bio = req.body.user.bio;

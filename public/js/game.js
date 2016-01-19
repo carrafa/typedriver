@@ -16,11 +16,14 @@ initData = { //initialization data to render player.
   color: randomColor // player can choose eventually
 }
 
+var raceId = 0;
+
 var raceStart = false;
 
-function startRace(sentence) { //starts the countdown, then starts the race
+function startRace(data) { //starts the countdown, then starts the race
   var intervalID = window.setInterval(function() {
     console.log(countdown);
+    raceId = data.id;
     $('#timer').text(countdown);
     if (countdown === 0) {
       $('#timer').text('go!');
@@ -29,7 +32,7 @@ function startRace(sentence) { //starts the countdown, then starts the race
     if (countdown < 0) {
       $('#timer').text('');
       clearInterval(intervalID);
-      $('#sentence').text(sentence);
+      $('#sentence').text(data.sentence);
       startRaceClock();
       countdown = 5;
     }
@@ -76,10 +79,12 @@ function checkFinish() {
   if (pos === 100) {
     time = $('#race-clock').text();
     data = {
-      id: id,
-      time: time,
-    }
-    socket.emit('player finishes', data)
-    console.log('emitted: ', data)
+      userId: id,
+      raceId: raceId,
+      sentence: $('#sentence').text(),
+      time: time
+    };
+    socket.emit('player finishes', data);
+    console.log('emitted: ', data);
   }
 }

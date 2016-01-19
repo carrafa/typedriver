@@ -33,8 +33,10 @@ function setKeyboardListener() { //listens for keyboard input
     if (raceStart && pos === 100) {
       time = $('#race-clock').text();
       data = {
-        id: id,
-        time: time,
+        userId: id,
+        raceId: raceId,
+        sentence: $('#sentence').text(),
+        time: time
       }
       socket.emit('player finishes', data);
       console.log('finished: ', data.time);
