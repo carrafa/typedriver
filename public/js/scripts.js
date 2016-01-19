@@ -29,7 +29,6 @@ function setKeyboardListener() { //listens for keyboard input
       };
       updateOnePlayer($('#' + id), data);
       socket.emit('update player', data);
-      console.log(pos);
     }
     if (raceStart && pos === 100) {
       time = $('#race-clock').text();
@@ -38,8 +37,8 @@ function setKeyboardListener() { //listens for keyboard input
         time: time,
       }
       socket.emit('player finishes', data);
+      console.log('finished: ', data.time);
       raceStart = false;
-      console.log('emitted: ', data);
       pos = 0;
       stopRaceClock();
     }
@@ -67,7 +66,6 @@ function renderFinishLine(numOfPlayers) {
 function updateOnePlayer(player, data) {
   player.remove();
   renderPlayer(data);
-  console.log('one player updated');
 }
 
 function updateAllPlayers(allPlayers) { // empties racetrack and updates with new player data
@@ -86,7 +84,6 @@ function globalListener() { // listens for socket messages
   });
 
   socket.on('user disconnected', function(id, allPlayerData) {
-    console.log(id);
     $('#', id).remove();
     updateAllPlayers(allPlayerData);
   });
