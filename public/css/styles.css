@@ -24,6 +24,10 @@ ul{
   padding: 0;
 }
 
+nav a{
+  color: white;
+}
+
 .player{
   position: relative;
   display: block;
