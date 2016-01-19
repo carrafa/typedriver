@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>typist</title>
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/styles.css">
-  </head>
+
+  <% include ./partials/head %>
+
   <body>
     <div id="modal">
       <div class="modal-content">
@@ -28,7 +25,9 @@
           </div>
         </div>
     </div>
+
     <% include ./partials/header %>
+    
     <div id="sentence">type the sentence here is fast as you can.  also do it accurately.</div>
     <div id="container">
       <div id="race-clock">00:00:00</div>
@@ -41,7 +40,6 @@
       </ul>
     </div>
     <div id="timer"></div>
-
   <script src="/socket.io/socket.io.js" charset="utf-8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js" charset="utf-8"></script>

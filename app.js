@@ -3,7 +3,6 @@ require('dotenv').load();
 var app = express();
 var server = require('http').Server(app);
 var socketIo = require('socket.io');
-
 var io = socketIo(server);
 
 // database

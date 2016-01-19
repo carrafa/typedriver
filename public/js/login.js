@@ -1,5 +1,6 @@
 console.log('hello, i am login.js');
 
+
 function checkCookie() {
   if ($.cookie('token')) {
     console.log('Already logged in!');
@@ -25,6 +26,19 @@ function createUser(userData, callback) {
   });
 }
 
+// function checkUser(search){
+//   $.ajax({
+//     method: 'get',
+//     url: '/api/user=name' + search,
+//     success: function(data){
+//       if (data){
+//         return true;
+//       }
+//
+//     }
+//   })
+// }
+
 function setSignUpFormHandler() {
   $('form#signup').on('submit', function(e) {
     e.preventDefault();
@@ -45,6 +59,12 @@ function setSignUpFormHandler() {
       password: passwordText
     };
     console.log('userdata', userData);
+
+    if ( checkUser() ){
+      console.log('user exists');
+    }else {
+      console.log('user dont exist');
+    }
 
     // create a new user
     createUser(userData, function(user) {
@@ -135,7 +155,6 @@ function setLogOutListener() {
 $(function() {
   checkCookie();
   setSignUpFormHandler();
-  // alertUser();
   setLogInFormHandler();
   setLogOutListener();
 });

@@ -3,8 +3,6 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 
-
-
 //----- routes -----//
 // index
 router.get('/', function(req, res) {
@@ -20,9 +18,9 @@ router.post('/', function(req, res) {
   var newUser = new User(req.body.user);
   newUser.save(function(err, databaseUser) {
     console.log(newUser);
-    console.log(err);
+    console.log("The error is: " + err);
     if (err) {
-      res.json(err.errors);
+      res.json({error: err.errors});
     }else {
       res.json(databaseUser);
     }
