@@ -107,7 +107,9 @@ function setLogInFormHandler() {
       renderPlayer(userData);
 
       // close modal
+      if ($.cookie('token')){
       $('#modal').toggle();
+      }
 
     });
 
