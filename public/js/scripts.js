@@ -25,7 +25,8 @@ function setKeyboardListener() { //listens for keyboard input
       data = {
         "left": pos + "%",
         "id": id,
-        "color": randomColor
+        "color": randomColor,
+        "room": room
       };
       updateOnePlayer($('#' + id), data);
       socket.emit('update player', data);
@@ -36,7 +37,8 @@ function setKeyboardListener() { //listens for keyboard input
         userId: id,
         raceId: raceId,
         sentence: $('#sentence').text(),
-        time: time
+        time: time,
+        room: room
       }
       socket.emit('player finishes', data);
       console.log('finished: ', data.time);
@@ -82,6 +84,7 @@ function updateAllPlayers(allPlayers) { // empties racetrack and updates with ne
 function globalListener() { // listens for socket messages
 
   socket.on('update all players', function(allPlayerData) {
+    console.log(allPlayerData);
     updateAllPlayers(allPlayerData);
   });
 
@@ -96,12 +99,23 @@ function globalListener() { // listens for socket messages
   })
 
   socket.on('room full', function() {
+    console.log('room fulllll!!!');
     $('#status').append($('<li>').text('room is full! now you have to wait'));
+  })
+
+  socket.on('room', function(data) {
+    initData.room = data.room
+    room = data.room
+    console.log(room);
+    initializePlayer(initData);
+  })
+
+  socket.on('disconnect', function(data) {
+    data.room = initData.room;
   })
 };
 
 $(function() { // start 'er upppppp
-  initializePlayer(initData);
   setKeyboardListener();
   globalListener();
 });

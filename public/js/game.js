@@ -7,8 +7,10 @@ var m = 0; // minutes on clock
 var s = 0; // seconds on clock
 var c = 0; // centiseconds on clock
 var id = Math.floor(Math.random() * 100); //random id for now.  will fill with database id later
+//bringing actual id in
 var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16); //random color for now.  can let player choose color later.
 var countdown = 5; // countdown to when the race starts
+var room; //race room.  track? vrooooom.
 
 initData = { //initialization data to render player.
   id: id, //will be userID
