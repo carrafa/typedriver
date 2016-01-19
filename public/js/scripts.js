@@ -34,6 +34,7 @@ function setKeyboardListener() { //listens for keyboard input
       };
     }
     socket.emit('update player', data);
+    console.log(pos);
   });
 };
 
@@ -73,9 +74,9 @@ function globalListener() { // listens for socket messages
     updateAllPlayers(allPlayerData);
   });
 
-  socket.on('start race', function() {
+  socket.on('start race', function(sentence) {
     $('#status').append($('<li>').text('race tiiiime'));
-    startRace();
+    startRace(sentence);
   })
 
   socket.on('room full', function() {
