@@ -2,9 +2,9 @@ console.log('hello, i am login.js');
 
 function checkCookie() {
   if ($.cookie('token')) {
-  console.log('Already logged in!');
+    console.log('Already logged in!');
   } else {
-  $('#modal').toggle();
+    $('#modal').toggle();
   }
 };
 
@@ -48,8 +48,8 @@ function setSignUpFormHandler() {
 
     // create a new user
     createUser(userData, function(user) {
-    console.log(user);
- });
+      console.log(user);
+    });
 
     // login new user
     logInUser(usernameText, passwordText, function(data) {
@@ -107,8 +107,8 @@ function setLogInFormHandler() {
       renderPlayer(userData);
 
       // close modal
-      if ($.cookie('token')){
-      $('#modal').toggle();
+      if ($.cookie('token')) {
+        $('#modal').toggle();
       }
 
     });
@@ -120,8 +120,8 @@ function setLogInFormHandler() {
 //----------------------------
 //---------- Logout ----------
 //----------------------------
-function setLogOutListener(){
-  $('form#logout').on('submit', function(e){
+function setLogOutListener() {
+  $('form#logout').on('submit', function(e) {
     console.log('working');
     e.preventDefault();
     $.removeCookie('token');
@@ -135,7 +135,7 @@ function setLogOutListener(){
 $(function() {
   checkCookie();
   setSignUpFormHandler();
-  alertUser();
+  // alertUser();
   setLogInFormHandler();
   setLogOutListener();
 });
