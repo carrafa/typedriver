@@ -31,7 +31,7 @@ function setKeyboardListener() { //listens for keyboard input
       socket.emit('update player', data);
       console.log(pos);
     }
-    if (pos === 100) {
+    if (raceStart && pos === 100) {
       time = $('#race-clock').text();
       data = {
         id: id,
@@ -39,8 +39,8 @@ function setKeyboardListener() { //listens for keyboard input
       }
       socket.emit('player finishes', data);
       raceStart = false;
-      pos = 0;
       console.log('emitted: ', data);
+      pos = 0;
     }
   });
 };
