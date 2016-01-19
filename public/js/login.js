@@ -1,10 +1,17 @@
 console.log('hello, i am login.js');
 
 function toggleModal() {
+  if ($.cookie('token')) {
+  console.log('Already logged in!');
+  } else {
   $('#modal').toggle();
+  }
 };
 
-// Send request to create a user
+
+//----------------------------
+//---------- Signup ----------
+//----------------------------
 function createUser(userData, callback) {
   $.ajax({
     method: 'post',
@@ -18,7 +25,7 @@ function createUser(userData, callback) {
   });
 }
 
-function setCreateUserFormHandler() {
+function setSignUpFormHandler() {
   $('form#signup').on('submit', function(e) {
     e.preventDefault();
 
@@ -41,55 +48,26 @@ function setCreateUserFormHandler() {
 
     // Create a new user
     createUser(userData, function(user) {
-      console.log(user);
-    });
+    console.log(user);
+ });
 
     // Login new user
     logInUser(usernameText, passwordText, function(data) {
-
       $.cookie('token', data.token); // save the token as a cookie
       console.log('Token:', $.cookie('token'));
-
-      toggleModal();
     });
 
+    console.log("Before close");
+    // Close modal
+    toggleModal();
 
   });
 }
 
-function updateUser(userData, callback) {
-  $.ajax({
-    method: 'patch',
-    url: '/api/users',
-    data: {
-      user: userData
-    },
-    success: function(data) {
-      callback(data);
-    }
-  });
-}
 
-function setUpdateUserFormHandler() {
-  $('form#update-time').on('submit', function(e) {
-    e.preventDefault();
-
-    var username = $(this).find('input[name="username"]');
-    var usernameText = username.val();
-    bioField.val('');
-
-    var userData = {
-      username: usernameText
-    };
-
-    updateUser(userData, function(user) {
-      console.log(user);
-      // updateUsersAndView();
-    });
-
-  });
-}
-
+//----------------------------
+//---------- Login -----------
+//----------------------------
 function logInUser(usernameAttempt, passwordAttempt, callback) {
   $.ajax({
     method: 'post',
@@ -137,35 +115,24 @@ function setLogInFormHandler() {
   });
 }
 
-function getAllUsers(callback) {
-  $.ajax({
-    url: '/api/users',
-    success: function(data) {
-      var users = data.users || [];
-      callback(users);
-    }
+
+//----------------------------
+//---------- Logout ----------
+//----------------------------
+function setLogOutListener(){
+  $('form#log-out').on('submit', function(e){
+    e.preventDefault();
+    $.removeCookie('token');
+
+    //Open modal
+    toggleModal();
   });
-}
-
-function updateUsersAndView() {
-
-  getAllUsers(function(users) {
-    $('section#users').empty();
-    var usersElement = renderUsers(users);
-    $('section#users').append(usersElement);
-  });
-
-  if ($.cookie('token')) {
-    $('.user-only').show();
-  } else {
-    $('.user-only').hide();
-  }
-
 }
 
 
 $(function() {
-  setUpdateUserFormHandler();
-  setCreateUserFormHandler();
+  toggleModal();
+  setSignUpFormHandler();
   setLogInFormHandler();
+  setLogOutListener();
 });

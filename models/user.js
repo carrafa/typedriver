@@ -4,23 +4,6 @@ var bcrypt = require('bcryptjs');
 var crypto = require('crypto');
 
 // schemas
-var StatSchema = mongoose.Schema({
-	high_score: {
-		type: String
-	},
-	wins: {
-		type: String
-	},
-	plays: {
-		type: String
-	},
-	wpm: {
-		type: String
-	}
-}, {
-	timestamps: true
-});
-
 var UserSchema = mongoose.Schema({
 	username: {
 		type: String
