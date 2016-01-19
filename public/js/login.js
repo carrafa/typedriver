@@ -1,6 +1,6 @@
 console.log('hello, i am login.js');
 
-function toggleModal() {
+function checkCookie() {
   if ($.cookie('token')) {
   console.log('Already logged in!');
   } else {
@@ -29,37 +29,36 @@ function setSignUpFormHandler() {
   $('form#signup').on('submit', function(e) {
     e.preventDefault();
 
-    // Obtain the username from form
+    // obtain the username from form
     var usernameField = $(this).find('input[name="username"]');
     var usernameText = usernameField.val();
     usernameField.val('');
 
-    // Obtain the password from form
+    // obtain the password from form
     var passwordField = $(this).find('input[name="password"]');
     var passwordText = passwordField.val();
     passwordField.val('');
 
-    // Organize the data to be sent
+    // organize the data to be sent
     var userData = {
       username: usernameText,
       password: passwordText
     };
     console.log('userdata', userData);
 
-    // Create a new user
+    // create a new user
     createUser(userData, function(user) {
     console.log(user);
  });
 
-    // Login new user
+    // login new user
     logInUser(usernameText, passwordText, function(data) {
       $.cookie('token', data.token); // save the token as a cookie
       console.log('Token:', $.cookie('token'));
     });
 
-    console.log("Before close");
-    // Close modal
-    toggleModal();
+    // close modal
+    $('#modal').toggle();
 
   });
 }
@@ -103,12 +102,12 @@ function setLogInFormHandler() {
     logInUser(usernameText, passwordText, function(data) {
 
       $.cookie('token', data.token); // save the token as a cookie
-
       console.log('Token:', $.cookie('token'));
-      // updateUsersAndView();
+
       renderPlayer(userData);
 
-      toggleModal();
+      // close modal
+      $('#modal').toggle();
 
     });
 
@@ -121,17 +120,18 @@ function setLogInFormHandler() {
 //----------------------------
 function setLogOutListener(){
   $('form#log-out').on('submit', function(e){
+    console.log('working');
     e.preventDefault();
     $.removeCookie('token');
 
-    //Open modal
-    toggleModal();
+    // refresh browser window
+    window.location.reload();
   });
 }
 
 
 $(function() {
-  toggleModal();
+  checkCookie();
   setSignUpFormHandler();
   setLogInFormHandler();
   setLogOutListener();
