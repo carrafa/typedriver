@@ -27,19 +27,29 @@ function setKeyboardListener() { //listens for keyboard input
         "id": id,
         "color": randomColor
       };
+      updateOnePlayer($('#' + id), data);
+      socket.emit('update player', data);
+      console.log(pos);
     }
-    updateOnePlayer($('#' + id), data);
-    socket.emit('update player', data);
-    console.log(pos);
+    if (pos === 100) {
+      time = $('#race-clock').text();
+      data = {
+        id: id,
+        time: time,
+      }
+      socket.emit('player finishes', data);
+      raceStart = false;
+      pos = 0;
+      console.log('emitted: ', data);
+    }
   });
 };
+
 
 function sentenceChecker() { // checks sentence
   var sentence = $('#sentence').text();
   var playerInput = $('#text-box').val();
   var match = sentence.substr(0, playerInput.length);
-  console.log('match: ', match);
-  console.log('playerInput: ', playerInput);
   if (playerInput === match) {
     return playerInput.length / sentence.length;
   } else {

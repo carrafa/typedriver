@@ -3,7 +3,6 @@ console.log('hello, i am game.js');
 
 
 var pos = 0; // starting point, win when you get to 100.
-var speed = 1; // speed.  starts at 1.  could change depending on how fast the game will be
 var m = 0; // minutes on clock
 var s = 0; // seconds on clock
 var c = 0; // centiseconds on clock
@@ -72,3 +71,15 @@ function stopRaceClock() {
   m = 0;
   window.clearInterval(clockID);
 };
+
+function checkFinish() {
+  if (pos === 100) {
+    time = $('#race-clock').text();
+    data = {
+      id: id,
+      time: time,
+    }
+    socket.emit('player finishes', data)
+    console.log('emitted: ', data)
+  }
+}
