@@ -13,9 +13,7 @@ var UserSchema = mongoose.Schema({
 	},
 	token: {
 		type: String
-	},
-	stats: [StatSchema]
-}, {
+	},{
 	timestamps: true
 });
 
