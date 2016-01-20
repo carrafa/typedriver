@@ -1,8 +1,6 @@
 console.log('hello, i am scripts.js');
 
-// var port = 8080;
-var socketUrl = location.origin; //  this is for development
-// var socketUrl = 'drywave.heroku.com'; //  this is for herokku
+var socketUrl = location.origin;
 
 var socket = io.connect(socketUrl);
 

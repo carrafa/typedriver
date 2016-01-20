@@ -30,9 +30,6 @@ app.use(bodyParser.urlencoded({
 var loadUser = require('./middleware/loadUser');
 app.use(loadUser);
 
-var cors = require('cors');
-app.use(cors());
-
 // routes
 var users = require('./routes/users');
 app.use('/api/users', users);
@@ -47,7 +44,6 @@ app.use('/api/finishers', finishers);
 
 // sockets
 var socketHandler = require('./lib/sockets');
-io.set('origin', '*');
 io.on('connection', function(socket) {
   socketHandler(socket, io);
 });
