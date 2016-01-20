@@ -6,11 +6,22 @@ var User = require('../models/user');
 //----- routes -----//
 // index
 router.get('/', function(req, res) {
-  User.find({}, function(err, databaseUsers) {
-    res.json({
-      users: databaseUsers
+  if (req.query.search) {
+    var searchTerm = req.query.search;
+    User.find({
+      username: searchTerm
+    }, function(err, databaseUser) {
+      res.json({
+        user: databaseUser
+      });
     });
-  });
+  } else {
+    User.find({}, function(err, databaseUsers) {
+      res.json({
+        users: databaseUsers
+      });
+    });
+  }
 });
 
 // create & save
@@ -20,8 +31,10 @@ router.post('/', function(req, res) {
     console.log(newUser);
     console.log("The error is: " + err);
     if (err) {
-      res.json({error: err.errors});
-    }else {
+      res.json({
+        error: err.errors
+      });
+    } else {
       res.json(databaseUser);
     }
   });

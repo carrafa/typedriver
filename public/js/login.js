@@ -96,7 +96,7 @@ function logInUser(usernameAttempt, passwordAttempt, callback) {
     },
     success: function(data) {
       callback(data);
-      initData.username = usernameAttempt;
+      // initData.username = usernameAttempt;
       // initData.id = data._id;
       // console.log('data: ', data);
       // console.log('init data: ', initData);
