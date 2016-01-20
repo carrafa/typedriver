@@ -13,7 +13,7 @@ var countdown = 5; // countdown to when the race starts
 var room; //race room.  track? vrooooom.
 
 initData = { //initialization data to render player.
-  id: id, //will be userID
+  id: id, //may not uset his actually
   left: pos,
   color: randomColor // player can choose eventually
 };
@@ -81,7 +81,7 @@ function checkFinish() {
   if (pos === 100) {
     time = $('#race-clock').text();
     data = {
-      userId: id,
+      username: initData.username,
       raceId: raceId,
       sentence: $('#sentence').text(),
       time: time

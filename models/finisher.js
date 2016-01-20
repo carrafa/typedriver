@@ -1,16 +1,13 @@
 var mongoose = require('mongoose');
 
 FinisherSchema = mongoose.Schema({
-  userId: {
+  username: {
     type: String
   },
   raceId: {
     type: String
   },
   room: {
-    type: String
-  },
-  username: {
     type: String
   },
   sentence: {

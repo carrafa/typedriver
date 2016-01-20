@@ -6,11 +6,7 @@ var User = require('../models/user');
 //----- routes -----//
 // index
 router.get('/', function(req, res) {
-  if (req.session) {
-    res.json({
-      session: session
-    });
-  } else if (req.query.search) {
+  if (req.query.search) {
     var search = req.query.search;
     User.find({
       username: search
@@ -67,7 +63,9 @@ router.post('/authenticate', function(req, res) {
           databaseUser.setToken(err, function() {
             res.json({
               description: 'success',
-              token: databaseUser.token
+              token: databaseUser.token,
+              username: databaseUser.username,
+              id: databaseUser._id
             });
           });
         }

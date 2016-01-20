@@ -34,7 +34,6 @@ function checkUser(search) {
       if (data) {
         return true;
       }
-
     }
   });
 }
@@ -124,6 +123,7 @@ function setLogInFormHandler() {
     logInUser(usernameText, passwordText, function(data) {
 
       $.cookie('token', data.token); // save the token as a cookie
+      $.cookie('username', usernameText);
       console.log('Token:', $.cookie('token'));
 
       renderPlayer(userData);

@@ -26,7 +26,8 @@ function setKeyboardListener() { // listens for keyboard input
         "left": pos + "%",
         "id": id,
         "color": randomColor,
-        "room": room
+        "room": room,
+        "username": initData.username
       };
       updateOnePlayer($('#' + id), data);
       socket.emit('update player', data);
@@ -34,7 +35,7 @@ function setKeyboardListener() { // listens for keyboard input
     if (raceStart && pos === 100) {
       time = $('#race-clock').text();
       data = {
-        userId: id,
+        username: initData.username,
         raceId: raceId,
         sentence: $('#sentence').text(),
         time: time,
@@ -85,6 +86,7 @@ function joinRaceHandler() {
   $('#ready').on('click', function(e) {
     e.preventDefault();
     // getUserByUsername()
+    initData.username = $.cookie('username');
     initializePlayer(initData);
     $(this).hide();
   })
