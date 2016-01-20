@@ -47,6 +47,7 @@ app.use('/api/finishers', finishers);
 
 // sockets
 var socketHandler = require('./lib/sockets');
+io.set('origins', '*');
 io.on('connection', function(socket) {
   socketHandler(socket, io);
 });
