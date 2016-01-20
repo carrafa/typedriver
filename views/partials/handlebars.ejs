@@ -1,20 +1,26 @@
 <script type="text/x-handlebars-template" id="handlebars-template">
-  <table>
-    <tr>
-      <th>name</th>
-      <th>sentence</th>
-      <th>time</th>
-      <th>wpm</th>
-    </tr>
+  <table id="simpleTable">
+    <thead>
+      <tr>
+        <th data-sort="string" >name</th>
+        <th>sentence</th>
+        <th>time</th>
+        <th data-sort="float">wpm</th>
+        <th data-sort="float">cpm</th>
+      </tr>
+    </thead>
 
-    {{#each finishers}}
-    <tr>
-      <td class="username">{{username}}</td>
-      <td class="sentence">{{sentence}}</td>
-      <td class="time">{{time}}</td>
-      <td class="wpm">{{wpm sentence time}}</td>
-    </tr>
-    {{/each}}
+    <tbody>
+      {{#each finishers}}
+      <tr>
+        <td class="username">{{username}}</td>
+        <td class="sentence">{{sentence}}</td>
+        <td class="time">{{time}}</td>
+        <td class="wpm">{{wpm sentence time}}</td>
+        <td class="wpm">{{cpm sentence time}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
 
   </table>
 </script>

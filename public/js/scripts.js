@@ -107,7 +107,7 @@ function getUserAJAX(callback) {
 function globalListener() { // listens for socket messages
 
   socket.on('update all players', function(allPlayerData) {
-    console.log(allPlayerData);
+    // console.log(allPlayerData);
     updateAllPlayers(allPlayerData);
   });
 

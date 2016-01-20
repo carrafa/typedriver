@@ -12,6 +12,13 @@ Handlebars.registerHelper('wpm', function(sentence, time) {
   var num = convertToNum(time);
   wpm = words / num * 60
   return wpm.toFixed(2);
+});
+
+Handlebars.registerHelper('cpm', function(sentence, time) {
+  var chars = sentence.length;
+  var num = convertToNum(time);
+  cpm = chars / num * 60;
+  return cpm.toFixed(2);
 })
 
 function getFinishers() {
@@ -20,6 +27,7 @@ function getFinishers() {
     method: 'get',
     success: function(data) {
       renderHandlebars(data);
+      $("#simpleTable").stupidtable();
     }
   });
 }
@@ -29,7 +37,6 @@ function convertToNum(numString) {
   var m = Math.floor(array[0]) * 60;
   var s = Math.floor(array[1]);
   var c = Math.floor(array[2]) / 100;
-  console.log('convert to numresult: ' + c + s + m)
   return c + s + m;
 };
 
@@ -42,6 +49,8 @@ function getWordsInSentence(sentence) {
   })
   return words
 }
+
+
 
 $(function() {
   getFinishers();
