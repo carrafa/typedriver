@@ -16,7 +16,7 @@ initData = { //initialization data to render player.
   id: id, //will be userID
   left: pos,
   color: randomColor // player can choose eventually
-}
+};
 
 var raceId = 0;
 

@@ -60,9 +60,9 @@ function setSignUpFormHandler() {
     };
     console.log('userdata', userData);
 
-    if ( checkUser() ){
+    if (checkUser()) {
       console.log('user exists');
-    }else {
+    } else {
       console.log('user dont exist');
     }
 
@@ -97,7 +97,11 @@ function logInUser(usernameAttempt, passwordAttempt, callback) {
     },
     success: function(data) {
       callback(data);
+      initData.username = usernameAttempt;
+      initData.id = data._id;
       socket.emit('new player', initData);
+      console.log('data: ', data);
+      console.log('init data: ', initData);
     }
   });
 }

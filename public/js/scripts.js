@@ -14,11 +14,11 @@ function renderPlayer(data) { //renders player on screen
   $('#race-track').append($player);
 };
 
-function initializePlayer(initData) { //initialization function.  used so every user can render the other players on connect.
+function initializePlayer(initData) { // initialization function.  used so every user can render the other players on connect.
   socket.emit('new player', initData);
 }
 
-function setKeyboardListener() { //listens for keyboard input
+function setKeyboardListener() { // listens for keyboard input
   $('body').on('keyup', 'input', function(e) {
     pos = (sentenceChecker() * 100) || pos;
     if (raceStart) {
