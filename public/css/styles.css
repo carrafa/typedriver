@@ -46,10 +46,6 @@ nav a{
   background-image: url("../images/racecar.png");
 }
 
-.form-container{
-  display: inline-block;
-}
-
 .container{
   min-width: 600px;
 }
@@ -73,14 +69,18 @@ nav a{
 .modal-body {
   position: absolute;
   width: 100%;
-  top: 36px;
+  top: 40px;
   background-color: rgb(220,220,220);
   padding-bottom: 100%;
 }
 
-form {
-  width: 80%;
-  margin: 0 auto;
+#login-title {
+  margin-top: 30px;
+}
+
+#login,#signup {
+  width: 20%;
+  margin: 20px auto 0;
 }
 
 .signupText {
@@ -104,6 +104,7 @@ form {
 #race-clock{
   display: block;
 }
+
 #status{
   position: relative;
   display: inline-block;
