@@ -8,28 +8,8 @@
   </head>
   <body>
     <% include ./partials/header %>
-    <div id="stats-container"> <!-- making this for now to hold stats -->
-      <div id="individual-player"> <!-- going to be a jQuery function to render the stats onto it so I'm just making it for reference -->
-        <ul id="player-stat">
-          <li>
-              <!-- userId goes here-->
-              {{userId}}
-          </li>
-          <li>
-            <!-- raceId goes here-->
-            {{raceId}}
-          </li>
-          <li>
-            <!-- sentence goes here-->
-            {{sentence}}
-          </li>
-          <li>
-            <!-- time goes here-->
-            {{time}}
-          </li>
-        </ul>
-      </div>
 
+    <div class="container">
       <div id="leaderboard"></div>
     </div>
     <script src="/js/handlebars-v4.0.5.js" charset="utf-8"></script>

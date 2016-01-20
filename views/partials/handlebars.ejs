@@ -6,16 +6,13 @@
       <th>time</th>
       <th>wpm</th>
     </tr>
-    <div>
-      {{finishers}}
-    </div>
 
     {{#each finishers}}
     <tr>
-      <td>{{username}}</td>
-      <td>{{sentence}}</td>
-      <td>{{time}}</td>
-      <td>wpm???</td>
+      <td class="username">{{username}}</td>
+      <td class="sentence">{{sentence}}</td>
+      <td class="time">{{time}}</td>
+      <td class="wpm">wpm???</td>
     </tr>
     {{/each}}
 
