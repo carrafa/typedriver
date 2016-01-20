@@ -6,11 +6,13 @@ var socket = io.connect(socketUrl);
 
 function renderPlayer(data) { //renders player on screen
   $player = $('<div>').addClass('player').attr('id', data.id);
+  $name = $('<div>').addClass('username').text(data.username);
   $player.css({
     "background-color": data.color,
     "left": data.left,
     "color": data.color
   });
+  $($player).append($name);
   $('#race-track').append($player);
 };
 

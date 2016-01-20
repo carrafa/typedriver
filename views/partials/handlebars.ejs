@@ -1,0 +1,23 @@
+<script type="text/x-handlebars-template" id="handlebars-template">
+  <table>
+    <tr>
+      <th>name</th>
+      <th>sentence</th>
+      <th>time</th>
+      <th>wpm</th>
+    </tr>
+    <div>
+      {{finishers}}
+    </div>
+
+    {{#each finishers}}
+    <tr>
+      <td>{{username}}</td>
+      <td>{{sentence}}</td>
+      <td>{{time}}</td>
+      <td>wpm???</td>
+    </tr>
+    {{/each}}
+
+  </table>
+</script>

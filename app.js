@@ -38,6 +38,10 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
+app.get('/stats', function(req, res) {
+  res.render('stats');
+})
+
 //api route
 var finishers = require('./routes/finishers');
 app.use('/api/finishers', finishers);
