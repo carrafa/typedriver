@@ -9,19 +9,21 @@
 
     <% include ./partials/header %>
 
-    <div id="sentence">type the sentence here is fast as you can.  also do it accurately.</div>
+    <div class="container">
+    <input id="text-box" placeholder="start typing here! do it fast!"></input>
+    <div id="sentence">type the sentence that appears here as fast as you can.  also do it accurately.</div>
     <div id="container">
-      <div id="race-clock">00:00:00</div>
       <div id="race-track-container">
         <a href="#" id="ready">ready?</a>
         <div id="race-track"></div>
         <div id="finish-line"></div>
       </div>
-      <ul id="status">
-        <li>waiting for more players</li>
-      </ul>
     </div>
     <div id="timer"></div>
+  </div>
+  <ul id="status">
+    <li>waiting for more players</li>
+  </ul>
   <script src="/socket.io/socket.io.js" charset="utf-8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js" charset="utf-8"></script>
