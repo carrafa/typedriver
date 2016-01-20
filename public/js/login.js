@@ -26,18 +26,18 @@ function createUser(userData, callback) {
   });
 }
 
-// function checkUser(search){
-//   $.ajax({
-//     method: 'get',
-//     url: '/api/user=name' + search,
-//     success: function(data){
-//       if (data){
-//         return true;
-//       }
-//
-//     }
-//   })
-// }
+function checkUser(search) {
+  $.ajax({
+    method: 'get',
+    url: '/api/user=name' + search,
+    success: function(data) {
+      if (data) {
+        return true;
+      }
+
+    }
+  })
+}
 
 function setSignUpFormHandler() {
   $('form#signup').on('submit', function(e) {
@@ -83,7 +83,6 @@ function setSignUpFormHandler() {
   });
 }
 
-
 //----------------------------
 //---------- Login -----------
 //----------------------------
@@ -98,10 +97,9 @@ function logInUser(usernameAttempt, passwordAttempt, callback) {
     success: function(data) {
       callback(data);
       initData.username = usernameAttempt;
-      initData.id = data._id;
-      socket.emit('new player', initData);
-      console.log('data: ', data);
-      console.log('init data: ', initData);
+      // initData.id = data._id;
+      // console.log('data: ', data);
+      // console.log('init data: ', initData);
     }
   });
 }

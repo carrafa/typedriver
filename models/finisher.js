@@ -7,6 +7,12 @@ FinisherSchema = mongoose.Schema({
   raceId: {
     type: String
   },
+  room: {
+    type: String
+  },
+  username: {
+    type: String
+  },
   sentence: {
     type: String
   },

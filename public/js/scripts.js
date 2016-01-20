@@ -81,6 +81,14 @@ function updateAllPlayers(allPlayers) { // empties racetrack and updates with ne
   renderFinishLine(allPlayers.length);
 };
 
+function joinRaceHandler() {
+  $('#ready').on('click', function(e) {
+    e.preventDefault();
+    initializePlayer(initData);
+    $(this).hide();
+  })
+}
+
 function globalListener() { // listens for socket messages
 
   socket.on('update all players', function(allPlayerData) {
@@ -107,7 +115,6 @@ function globalListener() { // listens for socket messages
     initData.room = data.room
     room = data.room
     console.log(room);
-    initializePlayer(initData);
   });
 
   socket.on('disconnect', function(data) {
@@ -118,4 +125,5 @@ function globalListener() { // listens for socket messages
 $(function() { // start 'er upppppp
   setKeyboardListener();
   globalListener();
+  joinRaceHandler();
 });
