@@ -16,9 +16,10 @@ router.get('/', function(req, res) {
     });
   } else if (req.query.search){
     var searchTerm = req.query.search;
-    Haiku.find({body: new RegExp(searchTerm, 'i') }, function(err, databaseHaikus){
-      res.json( {haikus: databaseHaikus })
+    Finisher.find({body: new RegExp(searchTerm, 'i') }, function(err, databaseFinishers){
+      res.json( {finishers: databaseFinishers })
   });
+}
   else {
     Finisher.find({}, function(err, dbFinishers) {
       res.json({
