@@ -7,6 +7,13 @@ function renderHandlebars(data) {
   $('#leaderboard').html(compiledHTML);
 };
 
+Handlebars.registerHelper('wpm', function(sentence, time) {
+  var words = getWordsInSentence(sentence);
+  var num = convertToNum(time);
+  wpm = words / num * 60
+  return wpm.toFixed(2);
+})
+
 function getFinishers() {
   $.ajax({
     url: '/api/finishers',
@@ -27,30 +34,16 @@ function convertToNum(numString) {
 };
 
 function getWordsInSentence(sentence) {
-  sentence.split(" ");
-  console.log("getWordsInSentenceresult" + sentence.length)
-  return sentence.length
-}
-
-function calculateWPM(sentence, numString) {
-  time = convertToNum(numString);
-  words = getWordsInSentence(sentence);
-  return
-}
-
-function renderWPM() {
-  $('tr').each(function(index) {
-    var numString = $(this).find('.time').text();
-    var sentence = $(this).find('.sentence').text();
-    var wpm = calculateWPM(sentence, numString)
-    console.log(wpm);
-    $(this).find('.wpm').text(wpm);
-
-  });
+  var words = 0;
+  var array = sentence.split("  ");
+  array.forEach(function(array) {
+    newArray = array.split(" ");
+    words = words + newArray.length;
+  })
+  return words
 }
 
 $(function() {
   getFinishers();
-  renderWPM();
 
 })
