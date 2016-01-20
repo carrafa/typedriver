@@ -47,7 +47,7 @@ app.use('/api/finishers', finishers);
 
 // sockets
 var socketHandler = require('./lib/sockets');
-io.set('origins', 'http://drywave.heroku.com:80');
+io.set('origin', '*');
 io.on('connection', function(socket) {
   socketHandler(socket, io);
 });
