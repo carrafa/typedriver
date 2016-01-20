@@ -4,30 +4,11 @@
   <% include ./partials/head %>
 
   <body>
-    <div id="modal">
-      <div class="modal-content">
-        <div class="modal-body">
-          <h4>Log In</h4>
-          <form id="login">
-         <input type="text" name="username" placeholder="Username">
-         <input type="text" name="password" placeholder="Password">
-         <br>
-         <input type="submit" name="submit" value="Submit">
 
-         <h4 class="signupText">Sign Up</h4>
-          </form>
-          <form id="signup">
-         <input type="text" name="username" placeholder="Username">
-         <input type="text" name="password" placeholder="Password">
-         <br>
-         <input type="submit" name="submit" value="Submit">
-          </form>
-          </div>
-        </div>
-    </div>
+  <% include ./partials/modal %>
 
     <% include ./partials/header %>
-    
+
     <div id="sentence">type the sentence here is fast as you can.  also do it accurately.</div>
     <div id="container">
       <div id="race-clock">00:00:00</div>
