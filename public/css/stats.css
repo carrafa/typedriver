@@ -1,3 +1,7 @@
 #race-clock{
   display: none;
 }
+
+th:hover{
+  cursor: pointer;
+}
