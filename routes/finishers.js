@@ -14,7 +14,12 @@ router.get('/', function(req, res) {
         user: databaseUser
       });
     });
-  } else {
+  } else if (req.query.search){
+    var searchTerm = req.query.search;
+    Haiku.find({body: new RegExp(searchTerm, 'i') }, function(err, databaseHaikus){
+      res.json( {haikus: databaseHaikus })
+  });
+  else {
     Finisher.find({}, function(err, dbFinishers) {
       res.json({
         finishers: dbFinishers
