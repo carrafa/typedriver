@@ -6,10 +6,14 @@ var User = require('../models/user');
 //----- routes -----//
 // index
 router.get('/', function(req, res) {
-  if (req.query.search) {
-    var searchTerm = req.query.search;
+  if (req.session) {
+    res.json({
+      session: session
+    });
+  } else if (req.query.search) {
+    var search = req.query.search;
     User.find({
-      username: searchTerm
+      username: search
     }, function(err, databaseUser) {
       res.json({
         user: databaseUser

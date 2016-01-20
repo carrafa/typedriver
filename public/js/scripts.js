@@ -64,13 +64,13 @@ function sentenceChecker() { // checks sentence
 function renderFinishLine(numOfPlayers) {
   $('#finish-line').css({
     height: numOfPlayers * 20
-  })
-}
+  });
+};
 
 function updateOnePlayer(player, data) {
   player.remove();
   renderPlayer(data);
-}
+};
 
 function updateAllPlayers(allPlayers) { // empties racetrack and updates with new player data
   $('#race-track').empty();
@@ -84,10 +84,21 @@ function updateAllPlayers(allPlayers) { // empties racetrack and updates with ne
 function joinRaceHandler() {
   $('#ready').on('click', function(e) {
     e.preventDefault();
+    // getUserByUsername()
     initializePlayer(initData);
     $(this).hide();
   })
-}
+};
+
+function getUserAJAX(callback) {
+  $.ajax({
+    method: 'get',
+    url: '/api/users',
+    success: function(data) {
+      callback(data);
+    }
+  });
+};
 
 function globalListener() { // listens for socket messages
 
@@ -106,6 +117,7 @@ function globalListener() { // listens for socket messages
     startRace(sentence);
   });
 
+  // probably don't need this.
   socket.on('room full', function() {
     console.log('room fulllll!!!');
     $('#status').append($('<li>').text('room is full! now you have to wait'));

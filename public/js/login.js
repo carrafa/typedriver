@@ -36,7 +36,7 @@ function checkUser(search) {
       }
 
     }
-  })
+  });
 }
 
 function setSignUpFormHandler() {
