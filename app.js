@@ -11,6 +11,7 @@ var mongoose = require('mongoose');
 mongoose.connect(mongoPath);
 
 // middleware
+
 var morgan = require('morgan');
 app.use(morgan('dev'));
 
@@ -29,12 +30,8 @@ app.use(bodyParser.urlencoded({
 var loadUser = require('./middleware/loadUser');
 app.use(loadUser);
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+var cors = require('cors');
+app.use(cors());
 
 // routes
 var users = require('./routes/users');

@@ -1,12 +1,9 @@
 console.log('hello, i am scripts.js');
 
 // var socketUrl = 'localhost:8080'; //  this is for development
-var socketUrl = 'drywave.heroku.com:80'; //  this is for herokku
-
-
+var socketUrl = 'drywave.heroku.com'; //  this is for herokku
 
 var socket = io.connect(socketUrl);
-// var socket = io.connect(window.location.hostname);
 
 function renderPlayer(data) { //renders player on screen
   $player = $('<div>').addClass('player').attr('id', data.id);
