@@ -75,7 +75,7 @@ $(function() {
 });
 
 
-// $('input#search-field').on('keyup', function(){
+// $('input#search-field').on('keyup', function(){ //
 //   var searchText = $(this).val();
 //   $.ajax({
 //     url: '/api/finishers?search=' + searchText,
