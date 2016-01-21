@@ -64,6 +64,7 @@ function setSignUpFormHandler() {
       // login new user
       logInUser(usernameText, passwordText, function(data) {
         $.cookie('token', data.token); // save the token as a cookie
+        $.cookie('username', usernameText); // save the token as a cookie
         console.log('Token:', $.cookie('token'));
       });
     });
