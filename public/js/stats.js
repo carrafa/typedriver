@@ -68,7 +68,7 @@ function getWordsInSentence(sentence) {
 };
 
 $(function() {
-  // getFinishers();
+   getFinishers();
   // $('input#search-field').on('keyup', function(){ //
   //   var searchText = $(this).val();
   //   $.ajax({
