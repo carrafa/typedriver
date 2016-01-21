@@ -53,9 +53,11 @@ router.post('/', function(req, res) {
 
 // update - may be not be functional?
 router.patch('/', function(req, res) {
+  console.log("REQQQQQQQQQ USER!!!!!!!" + req.user +
+    "REQQQQ BODY USERRRRRRRRR" +
+    req.body.user);
   if (req.user) {
-    req.user.bio = req.body.user.bio;
-
+    req.user.color = req.body.user.color;
     req.user.save(function(err, databaseUser) {
       res.json(databaseUser);
     });

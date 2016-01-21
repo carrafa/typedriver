@@ -16,12 +16,17 @@ var UserSchema = mongoose.Schema({
 	},
 	token: {
 		type: String
+	},
+	color: {
+		type: String
 	}
 }, {
 	timestamps: true
 });
 
-UserSchema.plugin(uniqueValidator, { message: 'This username is already in use, please choose another!' });
+UserSchema.plugin(uniqueValidator, {
+	message: 'This username is already in use, please choose another!'
+});
 
 //----- model methods -----//
 
