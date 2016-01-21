@@ -52,6 +52,16 @@ function getFinishers() {
   });
 };
 
+// function getPlayersInRace(raceId) {
+//   $.ajax({
+//     url: '/api/finishers?search=' + raceId,
+//     method: 'get',
+//     success: function(data) {
+//       return data
+//     }
+//   });
+// }
+
 
 $(function() {
   getFinishers();
