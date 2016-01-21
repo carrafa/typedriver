@@ -62,10 +62,18 @@ router.patch('/', function(req, res) {
 });
 
 router.delete('/', function(req, res) {
+  console.log("REQQQQ" + req.user);
   if (req.user) {
-    req.user.remove;
+    User.findByIdAndRemove({
+      _id: req.user._id
+    }, function(err) {
+      if (err) {
+        res.status(500).end();
+      }
+      res.status(204).end();
+    });
   }
-})
+});
 
 // authenticate: if username & password match
 router.post('/authenticate', function(req, res) {

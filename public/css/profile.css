@@ -31,6 +31,7 @@ a{
 #delete-form input[type="submit"]{
   background-color: crimson;
   color: snow;
+  border: none;
 }
 
 #delete-form input[type="password"]{

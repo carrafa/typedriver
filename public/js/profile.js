@@ -66,7 +66,7 @@ function deleteHandlerTwo() {
   $('.delete-2').on('click', function(e) {
     e.preventDefault();
     $('#delete-sequence').text(
-      'No. You are wrong.  It\'s because you are boring.  Type your dumb password in again to confirm and I\'ll delete your dumb profile.'
+      'No. You are wrong.  It\'s because you are boring.  click that big dumb red button and I\'ll delete your dumb profile.'
     );
     $('#delete-sequence-2').hide();
     $('#delete-sequence-3').show();
@@ -77,13 +77,32 @@ function deleteHandlerThree() {
   $('.delete-3').on('click', function(e) {
     e.preventDefault();
     $('#delete-sequence').text(
-      'Ok fine.  fair enough.  : (    Type your password in again to confirm and I\'ll pretend like you were never born.'
+      'Ok fine.  fair enough.  : (    click that big red button and I\'ll pretend like you were never born.'
     );
     $('#delete-sequence-2').hide();
     $('#delete-sequence-3').show();
   });
 };
 
+function deleteFormHandler() {
+  $('#delete-submit').on('click', function(e) {
+    e.preventDefault();
+    deleteUser();
+  });
+};
+
+function deleteUser() {
+  $.ajax({
+    method: 'delete',
+    url: 'api/users',
+    success: function(data) {
+      console.log(data);
+    }
+  });
+  $.removeCookie('token');
+  $.removeCookie('username');
+  window.location.reload();
+}
 
 $(function() {
   getProfileData();
@@ -92,4 +111,5 @@ $(function() {
   deleteHandlerOne();
   deleteHandlerTwo();
   deleteHandlerThree();
+  deleteFormHandler();
 });
