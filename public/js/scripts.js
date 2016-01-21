@@ -52,6 +52,13 @@ function setKeyboardListener() { // listens for keyboard input
   });
 };
 
+function pasteStopper() {
+  $('input').bind('paste', function(e) {
+    console.log('paste');
+    e.preventDefault();
+    $(this).val('(╯°□°）╯︵ ┻━┻ CHEATER!!!!!!!!!!');
+  });
+}
 
 function sentenceChecker() { // checks sentence
   var sentence = $('#sentence').text();
@@ -158,7 +165,8 @@ function globalListener() { // listens for socket messages
   // probably don't need this.
   socket.on('room full', function() {
     console.log('room fulllll!!!');
-    $('#status').append($('<li>').text('room is full! now you have to wait'));
+    $('#status').append($('<li>').text(
+      'room is full! now you have to wait'));
   });
 
   socket.on('room', function(data) {
@@ -181,4 +189,5 @@ $(function() { // start 'er upppppp
   globalListener();
   joinRaceHandler();
   chatHandler();
+  pasteStopper();
 });
