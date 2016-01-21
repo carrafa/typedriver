@@ -39,8 +39,20 @@ app.get('/', function(req, res) {
 });
 
 app.get('/stats', function(req, res) {
-  res.render('stats');
-})
+  if (req.user) {
+    res.render('stats');
+  } else {
+    res.redirect('/');
+  }
+});
+
+app.get('/profile', function(req, res) {
+  if (req.user) {
+    res.render('profile');
+  } else {
+    res.redirect('/');
+  }
+});
 
 //api route
 var finishers = require('./routes/finishers');

@@ -14,18 +14,21 @@ router.get('/', function(req, res) {
         user: databaseUser
       });
     });
-  } else if (req.query.search){
+  } else if (req.query.search) {
     var searchTerm = req.query.search;
-    Finisher.find({body: new RegExp(searchTerm, 'i') }, function(err, databaseFinishers){
-      res.json( {finishers: databaseFinishers })
-  });
-}
-  else {
+    Finisher.find({
+      body: new RegExp(searchTerm, 'i')
+    }, function(err, databaseFinishers) {
+      res.json({
+        finishers: databaseFinishers
+      })
+    });
+  } else {
     Finisher.find({}, function(err, dbFinishers) {
       res.json({
         finishers: dbFinishers
       });
-    })
+    });
   }
 });
 

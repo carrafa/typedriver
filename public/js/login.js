@@ -123,8 +123,8 @@ function setLogInFormHandler() {
     logInUser(usernameText, passwordText, function(data) {
 
       $.cookie('token', data.token); // save the token as a cookie
-      $.cookie('username', usernameText);
-      console.log('Token:', $.cookie('token'));
+      $.cookie('username', usernameText); // save username as cookie
+      // console.log('Token:', $.cookie('token'));
 
       renderPlayer(userData);
 
@@ -147,6 +147,7 @@ function setLogOutListener() {
     console.log('working');
     e.preventDefault();
     $.removeCookie('token');
+    $.removeCookie('username');
 
     // refresh browser window
     window.location.reload();

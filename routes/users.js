@@ -4,12 +4,23 @@ var router = express.Router();
 var User = require('../models/user');
 
 //----- routes -----//
+
+
 // index
 router.get('/', function(req, res) {
-  if (req.query.search) {
-    var search = req.query.search;
+  if (req.query.username) {
+    var username = req.query.username;
     User.find({
-      username: search
+      username: username
+    }, function(err, databaseUser) {
+      res.json({
+        user: databaseUser
+      });
+    });
+  } else if (req.user.token) {
+    var token = req.query.token;
+    User.find({
+      token: token
     }, function(err, databaseUser) {
       res.json({
         user: databaseUser
