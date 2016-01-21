@@ -5,8 +5,8 @@ var Finisher = require('../models/finisher');
 
 //GET ALL
 router.get('/', function(req, res) {
-  if (req.query.search) {
-    var search = req.query.search;
+  if (req.query.user) {
+    var search = req.query.user;
     Finisher.find({
       username: search
     }, function(err, databaseUser) {
@@ -14,10 +14,10 @@ router.get('/', function(req, res) {
         user: databaseUser
       });
     });
-  } else if (req.query.search) {
-    var searchTerm = req.query.search;
+  } else if (req.query.sentence) {
+    var searchTerm = req.query.sentence;
     Finisher.find({
-      body: new RegExp(searchTerm, 'i')
+      sentence: new RegExp(searchTerm, 'i')
     }, function(err, databaseFinishers) {
       res.json({
         finishers: databaseFinishers
