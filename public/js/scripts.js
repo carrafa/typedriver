@@ -120,7 +120,7 @@ function chatHandler() {
 
       data = {
         message: message,
-        user: initData.username,
+        user: $.cookie('username'),
         room: initData.room,
         color: initData.color
       }
@@ -133,7 +133,6 @@ function chatHandler() {
 };
 
 function renderChat(data) {
-  console.log(data);
   var $username = $('<span>').text(data.user).css({
     "font-weight": 'bold',
     "margin-right": ".5em",
@@ -148,7 +147,6 @@ function renderChat(data) {
 function globalListener() { // listens for socket messages
 
   socket.on('update all players', function(allPlayerData) {
-    // console.log(allPlayerData);
     updateAllPlayers(allPlayerData);
   });
 
