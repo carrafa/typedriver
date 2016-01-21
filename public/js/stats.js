@@ -73,3 +73,16 @@ $(function() {
   getFinishers();
 
 });
+
+
+// $('input#search-field').on('keyup', function(){
+//   var searchText = $(this).val();
+//   $.ajax({
+//     url: '/api/finishers?search=' + searchText,
+//     success: function(data){
+//       var finishers = data.finishers;
+//       var $list = $('#finisher-list');
+//       renderInfoList(finishers, $list)
+//     }
+//   })
+// })
