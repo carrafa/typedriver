@@ -21,12 +21,6 @@ Handlebars.registerHelper('cpm', function(sentence, time) {
   return cpm.toFixed(2)
 });
 
-Handlebars.registerHelper('place', function(time, raceId) {
-  var num = convertToNum(time);
-  var players = getPlayersInRace(raceId)
-  return players
-
-});
 
 function getFinishers() {
   $.ajax({
@@ -67,8 +61,9 @@ function getWordsInSentence(sentence) {
   return words
 };
 
+
 $(function() {
-   getFinishers();
+  getFinishers();
   // $('input#search-field').on('keyup', function(){ //
   //   var searchText = $(this).val();
   //   $.ajax({
@@ -80,4 +75,6 @@ $(function() {
   //     }
   //   })
   // })
+
+
 });

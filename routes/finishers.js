@@ -5,13 +5,13 @@ var Finisher = require('../models/finisher');
 
 //GET ALL
 router.get('/', function(req, res) {
-  if (req.query.user) {
-    var search = req.query.user;
+  if (req.query.raceId) {
+    var search = req.query.raceId;
     Finisher.find({
-      username: search
-    }, function(err, databaseUser) {
+      raceId: search
+    }, function(err, databaseFinishers) {
       res.json({
-        user: databaseUser
+        user: databaseFinishers
       });
     });
   } else if (req.query.sentence) {
@@ -23,7 +23,7 @@ router.get('/', function(req, res) {
         finishers: databaseFinishers
       })
     });
-  } else{
+  } else {
     Finisher.find({}, function(err, dbFinishers) {
       res.json({
         finishers: dbFinishers

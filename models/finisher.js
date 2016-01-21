@@ -15,6 +15,9 @@ FinisherSchema = mongoose.Schema({
   },
   time: {
     type: String
+  },
+  place: {
+    type: String
   }
 }, {
   timestamps: true
