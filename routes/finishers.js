@@ -14,8 +14,8 @@ router.get('/', function(req, res) {
         user: databaseUser
       });
     });
-  } else if ((req.query.sentence) && (req.query.time) && (req.query.raceId) && (req.query.room)) {
-    var searchTerm = req.query.sentence && req.query.time && req.query.raceId && req.query.room;
+  } else if (req.query.sentence) {
+    var searchTerm = req.query.sentence;
     Finisher.find({
       sentence: new RegExp(searchTerm, 'i')
     }, function(err, databaseFinishers) {
