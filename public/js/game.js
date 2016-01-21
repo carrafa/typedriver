@@ -142,7 +142,6 @@ function findAndRenderFinishers() {
     url: '/api/finishers?raceId=' + raceId,
     success: function(data) {
       renderFinishersHandlebars(data);
-      console.log(data);
     }
   })
 };

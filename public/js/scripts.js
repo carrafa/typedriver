@@ -47,6 +47,7 @@ function setKeyboardListener() { // listens for keyboard input
       console.log('finished: ', data.time);
       raceStart = false;
       pos = 0;
+      room = null;
       stopRaceClock();
     }
   });
