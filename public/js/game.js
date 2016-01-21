@@ -93,7 +93,7 @@ function checkFinish() {
 
 
 function waitForFinishers() {
-  waitForFinishers = window.setInterval(function() {
+  waitForFinishersId = window.setInterval(function() {
     initData.raceId = raceId
     socket.emit('is race over', initData)
     console.log('is race over???');

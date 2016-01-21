@@ -178,14 +178,15 @@ function globalListener() { // listens for socket messages
   });
 
   socket.on('wait for finishers', function(data) {
-    waitForFinishers();
+    // waitForFinishers();
   });
 
   socket.on('race not over', function(data) {
-    console.log(data);
+    console.log('race not over!!!', data);
   });
 
   socket.on('race over', function(raceId) {
+    clearInterval(waitForFinishersId);
     console.log('race over!!!!', data);
   });
 
