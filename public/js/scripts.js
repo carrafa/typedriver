@@ -104,6 +104,38 @@ function getUserAJAX(callback) {
   });
 };
 
+function chatHandler() {
+  $('#chat').on('keydown', function(e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      var $textField = $('#chat');
+      var message = $textField.val();
+
+      data = {
+        message: message,
+        user: initData.username,
+        room: initData.room,
+        color: initData.color
+      }
+      socket.emit('user chat', data);
+      $textField.val('');
+    }
+  })
+};
+
+function renderChat(data) {
+  console.log(data);
+  var $username = $('<span>').text(data.user).css({
+    "font-weight": 'bold',
+    "margin-right": ".5em",
+    color: data.color
+  });
+  var $message = $('<div>').addClass('message').text(data.message);
+  $message.prepend($username);
+  var $li = $('<li>').append($message);
+  $('#status').append($li);
+}
+
 function globalListener() { // listens for socket messages
 
   socket.on('update all players', function(allPlayerData) {
@@ -133,6 +165,10 @@ function globalListener() { // listens for socket messages
     console.log(room);
   });
 
+  socket.on('global chat', function(data) {
+    renderChat(data);
+  });
+
   socket.on('disconnect', function(data) {
     data.room = initData.room;
   });
@@ -142,4 +178,5 @@ $(function() { // start 'er upppppp
   setKeyboardListener();
   globalListener();
   joinRaceHandler();
+  chatHandler();
 });

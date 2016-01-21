@@ -11,15 +11,22 @@ Handlebars.registerHelper('wpm', function(sentence, time) {
   var words = getWordsInSentence(sentence);
   var num = convertToNum(time);
   wpm = words / num * 60
-  return wpm.toFixed(2);
+  return wpm.toFixed(2)
 });
 
 Handlebars.registerHelper('cpm', function(sentence, time) {
   var chars = sentence.length;
   var num = convertToNum(time);
   cpm = chars / num * 60;
-  return cpm.toFixed(2);
-})
+  return cpm.toFixed(2)
+});
+
+Handlebars.registerHelper('place', function(time, raceId) {
+  var num = convertToNum(time);
+  var players = getPlayersInRace(raceId)
+  return players
+
+});
 
 function getFinishers() {
   $.ajax({
@@ -28,6 +35,16 @@ function getFinishers() {
     success: function(data) {
       renderHandlebars(data);
       $("#simpleTable").stupidtable();
+    }
+  });
+};
+
+function getPlayersInRace(raceId) {
+  $.ajax({
+    url: '/api/finishers?search=' + raceId,
+    method: 'get',
+    success: function(data) {
+      return data
     }
   });
 }
@@ -48,11 +65,11 @@ function getWordsInSentence(sentence) {
     words = words + newArray.length;
   })
   return words
-}
+};
 
 
 
 $(function() {
   getFinishers();
 
-})
+});

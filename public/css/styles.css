@@ -137,7 +137,8 @@ ul{
 
 #race-track-container{
   display: inline-block;
-  width: 82%;
+  width: 90%;
+  float: right;
 }
 
 #race-track{
@@ -163,7 +164,9 @@ ul{
 
 /* status window */
 
-#status{
+
+
+#status-container{
   position: absolute;
   left: 1em;
   background-color: dimgray;
@@ -173,7 +176,8 @@ ul{
   border-radius: 5px;
   font-weight: bold;
   padding: 5px;
-  width: 11%;
+  width: 20%;
+  max-height: 500px;
 }
 
 #status li:nth-child(even){
@@ -190,4 +194,20 @@ ul{
   margin-top: -100px;
   margin-left: 20%;
   top: 0;
+}
+
+#chat{
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  font-size: 1em;
+  height: 1.5em;
+}
+
+#status li{
+  margin: 0;
+}
+
+.message{
+  margin: 0;
 }
