@@ -119,6 +119,8 @@ function chatHandler() {
       }
       socket.emit('user chat', data);
       $textField.val('');
+      var $chatWindow = $('#status');
+      $chatWindow.scrollTop($chatWindow.prop("scrollHeight"));
     }
   })
 };

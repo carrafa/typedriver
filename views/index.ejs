@@ -9,6 +9,13 @@
 
     <% include ./partials/header %>
 
+    <div id="status-container">
+      <ul id="status">
+        <li>waiting for more players</li>
+      </ul>
+      <input type="text" id="chat"></input>
+    </div>
+    
     <div class="container">
     <input id="text-box" placeholder="start typing here! do it fast!"></input>
     <div id="sentence">type the sentence that appears here as fast as you can.  also do it accurately.</div>
@@ -20,12 +27,6 @@
       </div>
     </div>
     <div id="timer"></div>
-  </div>
-  <div id="status-container">
-    <ul id="status">
-      <li>waiting for more players</li>
-    </ul>
-    <input type="text" id="chat"></input>
   </div>
   <script src="/socket.io/socket.io.js" charset="utf-8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
