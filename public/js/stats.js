@@ -67,22 +67,36 @@ function getWordsInSentence(sentence) {
   return words
 };
 
+function renderFinisher(finisher){
+  var lines = finisher.body.split("\n");
+  var $el = $('<div>').addClass('finisher content-block'); // <div class="haiku content-block">
+  $el.append(  $('<h2>').addClass('username').text(finisher.username)  );  //   <h2 class='username'>
+  for (var i = 0; i < lines.length; i++) { //   <p>
+    $el.append( $('<p>').text(lines[i]) );
+  }
 
+
+function renderFinisherList(finishers, $list){
+  $list.empty();
+  var finisher;
+  for (var i = 0; i < finishers.length; i++) {
+    finisher = finishers[i];
+    $finisherView = renderFinisher(finisher);
+    $list.append($finisherView);
+  }
+}
 
 $(function() {
   getFinishers();
-
+  $('input#search-field').on('keyup', function(){ //
+    var searchText = $(this).val();
+    $.ajax({
+      url: '/api/finishers?search=' + searchText,
+      success: function(data){
+        var finishers = data.finishers;
+        var $list = $('#finisher-list');
+        renderInfoList(finishers, $list)
+      }
+    })
+  })
 });
-
-
-// $('input#search-field').on('keyup', function(){ //
-//   var searchText = $(this).val();
-//   $.ajax({
-//     url: '/api/finishers?search=' + searchText,
-//     success: function(data){
-//       var finishers = data.finishers;
-//       var $list = $('#finisher-list');
-//       renderInfoList(finishers, $list)
-//     }
-//   })
-// })
