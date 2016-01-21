@@ -4,9 +4,35 @@
 }
 
 #color-form{
-  width: 50%;
+  width: 25%;
   margin: 0 auto;
 }
 #color-form #color{
-  height: 200px;
+  height: 100px;
+}
+
+a{
+  color: crimson;
+  text-decoration: none;
+}
+
+#delete-sequence-2{
+  display: none;
+}
+
+#delete-sequence-2 a:first-child{
+  margin-right: 6em;
+}
+
+#delete-sequence-3{
+  display: none;
+}
+
+#delete-form input[type="submit"]{
+  background-color: crimson;
+  color: snow;
+}
+
+#delete-form input[type="password"]{
+  color: crimson
 }
