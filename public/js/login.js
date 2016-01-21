@@ -1,6 +1,5 @@
 console.log('hello, i am login.js');
 
-
 function checkCookie() {
   if ($.cookie('token')) {
     console.log('Already logged in!');
@@ -59,21 +58,14 @@ function setSignUpFormHandler() {
     };
     console.log('userdata', userData);
 
-    if (checkUser()) {
-      console.log('user exists');
-    } else {
-      console.log('user dont exist');
-    }
-
     // create a new user
     createUser(userData, function(user) {
       console.log(user);
-    });
-
-    // login new user
-    logInUser(usernameText, passwordText, function(data) {
-      $.cookie('token', data.token); // save the token as a cookie
-      console.log('Token:', $.cookie('token'));
+      // login new user
+      logInUser(usernameText, passwordText, function(data) {
+        $.cookie('token', data.token); // save the token as a cookie
+        console.log('Token:', $.cookie('token'));
+      });
     });
 
     // close modal
@@ -155,6 +147,7 @@ function setLogOutListener() {
 
 
 $(function() {
+  // checkToken();
   checkCookie();
   setSignUpFormHandler();
   setLogInFormHandler();
