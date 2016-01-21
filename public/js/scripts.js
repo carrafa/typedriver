@@ -58,7 +58,7 @@ function pasteStopper() {
     e.preventDefault();
     $(this).val('(╯°□°）╯︵ ┻━┻ CHEATER!!!!!!!!!!');
   });
-}
+};
 
 function sentenceChecker() { // checks sentence
   var sentence = $('#sentence').text();
@@ -175,6 +175,18 @@ function globalListener() { // listens for socket messages
 
   socket.on('global chat', function(data) {
     renderChat(data);
+  });
+
+  socket.on('wait for finishers', function(data) {
+    waitForFinishers();
+  });
+
+  socket.on('race not over', function(data) {
+    console.log(data);
+  });
+
+  socket.on('race over', function(raceId) {
+    console.log('race over!!!!', data);
   });
 
   socket.on('disconnect', function(data) {

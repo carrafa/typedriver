@@ -88,5 +88,14 @@ function checkFinish() {
     };
     socket.emit('player finishes', data);
     console.log('emitted: ', data);
-  }
+  };
+};
+
+
+function waitForFinishers() {
+  waitForFinishers = window.setInterval(function() {
+    initData.raceId = raceId
+    socket.emit('is race over', initData)
+    console.log('is race over???');
+  }, 500)
 }

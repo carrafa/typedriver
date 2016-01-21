@@ -178,6 +178,8 @@ ul{
   font-weight: bold;
   padding: 5px;
   width: 18%;
+  border: 2px solid black;
+  padding-bottom: -5px;
 }
 
 #status{

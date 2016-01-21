@@ -33,6 +33,7 @@ function colorChanger() {
 function colorFormHandler() {
   $('#color-form').on('submit', function(e) {
     e.preventDefault();
+    console.log('mouseup!');
     color = $('#color').val();
     data = {
       color: color
