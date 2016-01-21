@@ -22,6 +22,25 @@ Handlebars.registerHelper('cpm', function(sentence, time) {
 });
 
 
+function convertToNum(numString) {
+  var array = numString.split(":");
+  var m = Math.floor(array[0]) * 60;
+  var s = Math.floor(array[1]);
+  var c = Math.floor(array[2]) / 100;
+  return c + s + m;
+};
+
+function getWordsInSentence(sentence) {
+  var words = 0;
+  var array = sentence.split("  ");
+  array.forEach(function(array) {
+    newArray = array.split(" ");
+    words = words + newArray.length;
+  })
+  return words
+};
+
+
 function getFinishers() {
   $.ajax({
     url: '/api/finishers',
@@ -42,24 +61,6 @@ function getPlayersInRace(raceId) {
     }
   });
 }
-
-function convertToNum(numString) {
-  var array = numString.split(":");
-  var m = Math.floor(array[0]) * 60;
-  var s = Math.floor(array[1]);
-  var c = Math.floor(array[2]) / 100;
-  return c + s + m;
-};
-
-function getWordsInSentence(sentence) {
-  var words = 0;
-  var array = sentence.split("  ");
-  array.forEach(function(array) {
-    newArray = array.split(" ");
-    words = words + newArray.length;
-  })
-  return words
-};
 
 
 $(function() {

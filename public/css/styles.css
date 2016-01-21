@@ -162,6 +162,11 @@ ul{
   font-size: 2.5em;
 }
 
+#race-results{
+  width: 40%;
+  margin: 0 auto;
+}
+
 /* status window */
 
 

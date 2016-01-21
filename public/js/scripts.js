@@ -178,7 +178,7 @@ function globalListener() { // listens for socket messages
   });
 
   socket.on('wait for finishers', function(data) {
-    // waitForFinishers();
+    waitForFinishers();
   });
 
   socket.on('race not over', function(data) {

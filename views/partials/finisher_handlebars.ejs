@@ -1,0 +1,27 @@
+<script type="text/x-handlebars-template" id="handlebars-finishers-template">
+  <table id="simpleTable">
+    <div>{{users}}</div>
+    <thead>
+      <tr>
+        <th data-sort="string">name</th>
+        <th data-sort="string">time</th>
+        <th data-sort="float">wpm</th>
+        <th data-sort="float">cpm</th>
+        <th data-sort="float">place</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each user}}
+      <tr>
+        <td class="username">{{username}}</td>
+        <td class="time">{{time}}</td>
+        <td class="wpm">{{wpm sentence time}}</td>
+        <td class="cpm">{{cpm sentence time}}</td>
+        <td class="place">{{place}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+
+  </table>
+</script>
