@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
       });
     });
   } else if (req.user.token) {
-    var token = req.query.token;
+    var token = req.user.token;
     User.find({
       token: token
     }, function(err, databaseUser) {

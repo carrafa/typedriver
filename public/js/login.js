@@ -148,7 +148,6 @@ function setLogOutListener() {
     e.preventDefault();
     $.removeCookie('token');
     $.removeCookie('username');
-
     // refresh browser window
     window.location.reload();
   });

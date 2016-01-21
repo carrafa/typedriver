@@ -1,0 +1,12 @@
+.username{
+  font-family: 'Bangers', cursive;
+  font-size: 10em;
+}
+
+#color-form{
+  width: 50%;
+  margin: 0 auto;
+}
+#color-form #color{
+  height: 200px;
+}

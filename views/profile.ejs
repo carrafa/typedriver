@@ -3,12 +3,21 @@
   <head>
     <% include ./partials/head %>
     <% include ./partials/profile_handlebars %>
+    <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+    <link href='/css/profile.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <% include ./partials/header %>
 
-    <div id="profile-container"></div>
+    <div class="container">
+      <div id="profile-container"></div>
 
+      <form id="color-form">
+        <input type="color" id="color">
+        <input type="submit" id="submit">
+      </form>
+
+    </div>
 
 
     <script src="/js/handlebars-v4.0.5.js" charset="utf-8"></script>
