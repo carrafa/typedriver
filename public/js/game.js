@@ -28,7 +28,7 @@ function startRace(data) { //starts the countdown, then starts the race
     raceId = data.id;
     $('#timer').text(countdown);
     if (countdown === 0) {
-      $('#timer').text('go!');
+      $('#timer').text('!!!');
       raceStart = true;
     }
     if (countdown < 0) {

@@ -204,9 +204,9 @@ ul{
 
 #timer{
   position: fixed;
+  margin-top: -150px;
   font-size: 100vh;
-  margin-top: -100px;
-  margin-left: 20%;
+  width: 100%;
   top: 0;
 }
 
