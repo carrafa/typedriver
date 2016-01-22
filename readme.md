@@ -11,7 +11,7 @@ When a player clicks ready, they are sent to the next available room.  When ther
 
 # SENTENCE!
 
-The sentence is a random sentence that is pulled from the Shake It Speare API.  An api that uses a Markov Model of Shakespeare's body of work to construct sentences.
+The sentence is a random sentence that is pulled from the Shake It Speare API, which uses a Markov Model of Shakespeare's body of work to construct sentences.
 
 # SOCKETS!
 
@@ -34,48 +34,5 @@ You can also filter out the sentences to find all the ones that contain the word
 
 A user can create a profile, to keep track of their high scores.  They can also pick their favorite color, and their race car will be painted accordingly.
 
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
-![racecar](./md_images/racecar.png)
 ![racecar](./md_images/racecar.png)
 ![racecar](./md_images/racecar.png)
