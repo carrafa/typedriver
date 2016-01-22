@@ -52,24 +52,15 @@ function getFinishers() {
   });
 };
 
-// function getPlayersInRace(raceId) {
-//   $.ajax({
-//     url: '/api/finishers?search=' + raceId,
-//     method: 'get',
-//     success: function(data) {
-//       return data
-//     }
-//   });
-// }
-// function searchStuff(){
+// function searchStuff(searchText){
 //   $('input#search-field').on('keyup', function(){ //
 //     var searchText = $(this).val();
 //     $.ajax({
-//       url: '/api/finishers?search=' + searchText,
+//       var urlApi = '/api/finishers';
+//       url: urlApi + searchText,
 //       success: function(data){
-//         // var finishers = data.finishers;
-//         // var $el = $('#finisher-list');
-//         // renderInfoList(finishers, $el)
+//         res.JSON;
+//         console.log("Bueller");
 //       }
 //     })
 //   });
