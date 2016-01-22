@@ -41,9 +41,13 @@ function getWordsInSentence(sentence) {
 };
 
 
-function getFinishers() {
+function getFinishers(search) {
+  url = '/api/finishers';
+  if (search) {
+    url = url + "?sentence=" + search;
+  }
   $.ajax({
-    url: '/api/finishers',
+    url: url,
     method: 'get',
     success: function(data) {
       renderHandlebars(data);
@@ -52,21 +56,15 @@ function getFinishers() {
   });
 };
 
-// function searchStuff(searchText){
-//   $('input#search-field').on('keyup', function(){ //
-//     var searchText = $(this).val();
-//     $.ajax({
-//       var urlApi = '/api/finishers';
-//       url: urlApi + searchText,
-//       success: function(data){
-//         res.JSON;
-//         console.log("Bueller");
-//       }
-//     })
-//   });
-// };
+function searchFormHandler() {
+  $('input#search').on('keyup', function() { //
+    search = $('input#search').val();
+    $('#leaderboard').empty();
+    getFinishers(search);
+  });
+};
 
 $(function() {
   getFinishers();
-
+  searchFormHandler();
 });

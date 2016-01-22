@@ -67,7 +67,7 @@ ul{
 }
 
 
-/*------ Modal -----*/
+/*------ Log in modal -----*/
 #modal {
   top: 0;
   left: 0;
@@ -130,6 +130,7 @@ ul{
   padding-left: 40px;
 }
 
+/*race track!*/
 .container{
   min-width: 600px;
   padding-top: 2em;
@@ -226,4 +227,9 @@ ul{
 
 .message{
   margin: 0;
+}
+
+/* search bar hidden on every page except stats */
+#search{
+  display: none;
 }
