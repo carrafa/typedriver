@@ -8,7 +8,6 @@ function checkCookie() {
   }
 };
 
-
 //----------------------------
 //---------- Signup ----------
 //----------------------------
@@ -68,10 +67,6 @@ function setSignUpFormHandler() {
         console.log('Token:', $.cookie('token'));
       });
     });
-
-    // close modal
-    $('#modal').toggle();
-
   });
 }
 
@@ -148,7 +143,6 @@ function setLogOutListener() {
 
 
 $(function() {
-  // checkToken();
   checkCookie();
   setSignUpFormHandler();
   setLogInFormHandler();
