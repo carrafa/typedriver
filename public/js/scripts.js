@@ -53,6 +53,7 @@ function setKeyboardListener() { // listens for keyboard input
   });
 };
 
+// stop the cheaters!!
 function pasteStopper() {
   $('input').bind('paste', function(e) {
     console.log('paste');
@@ -112,6 +113,7 @@ function getUserAJAX(callback) {
   });
 };
 
+// chat stuff
 function chatHandler() {
   $('#chat').on('keydown', function(e) {
     if (e.keyCode === 13) {
@@ -127,10 +129,8 @@ function chatHandler() {
       }
       socket.emit('user chat', data);
       $textField.val('');
-      var $chatWindow = $('#status');
-      $chatWindow.scrollTop($chatWindow.prop("scrollHeight"));
     }
-  })
+  });
 };
 
 function renderChat(data) {
@@ -150,6 +150,7 @@ function isRaceOver(raceId) {
   console.log(' i asked if it\'s over');
 };
 
+//socket stuff
 function globalListener() { // listens for socket messages
 
   socket.on('update all players', function(allPlayerData) {
@@ -181,6 +182,8 @@ function globalListener() { // listens for socket messages
 
   socket.on('global chat', function(data) {
     renderChat(data);
+    var $chatWindow = $('#status');
+    $chatWindow.scrollTop($chatWindow.prop("scrollHeight"));
   });
 
   socket.on('wait for finishers', function(data) {
