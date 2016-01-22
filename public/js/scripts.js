@@ -145,6 +145,11 @@ function renderChat(data) {
   $('#status').append($li);
 }
 
+function isRaceOver(raceId) {
+  socket.emit('is race over', raceId)
+  console.log(' i asked if it\'s over');
+};
+
 function globalListener() { // listens for socket messages
 
   socket.on('update all players', function(allPlayerData) {
