@@ -32,7 +32,7 @@ You can also filter out the sentences to find all the ones that contain the word
 ![profile](./md_images/profile.png)
 
 
-A user can create a profile, to keep track of their high scores.  They can also pick their favorite color, and their race car will be painted accordingly.
+Users create profiles which are used to keep track of their times.  They can also pick their favorite color, and their race car will be painted accordingly.
 
 ![racecar](./md_images/racecar.png)
 ![racecar](./md_images/racecar.png)

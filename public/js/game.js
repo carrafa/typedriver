@@ -10,10 +10,10 @@ var id = Math.floor(Math.random() * 100); //random id for now.  will fill with d
 //bringing actual id in
 var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16); //random color for now.  can let player choose color later.
 var countdown = 5; // countdown to when the race starts
-var room; //race room.  track? vrooooom.
+var room; //race room.  track? vrooooooooom.
 
 initData = { //initialization data to render player.
-  id: id, //may not uset his actually
+  id: id, //may not use this actually
   left: pos,
   color: randomColor // player can choose eventually
 };
@@ -104,7 +104,7 @@ function renderFinishersHandlebars(data) {
 Handlebars.registerHelper('wpm', function(sentence, time) {
   var words = getWordsInSentence(sentence);
   var num = convertToNum(time);
-  wpm = words / num * 60
+  wpm = words / num * 60;
   return wpm.toFixed(2)
 });
 
@@ -148,7 +148,7 @@ function findAndRenderFinishers() {
 
 function waitForFinishers() {
   waitForFinishersId = window.setInterval(function() {
-    initData.raceId = raceId
-    findAndRenderFinishers()
+    initData.raceId = raceId;
+    findAndRenderFinishers();
   }, 500);
 }

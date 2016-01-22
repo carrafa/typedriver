@@ -97,18 +97,26 @@ function joinRaceHandler() {
   $('#ready').on('click', function(e) {
     e.preventDefault();
     // getUserByUsername()
-    initData.username = $.cookie('username');
-    initializePlayer(initData);
+    getUserAJAX(initData);
+    // initData.username = $.cookie('username');
+    // initializePlayer(initData);
     $(this).hide();
   })
 };
 
-function getUserAJAX(callback) {
+function getUserAJAX(initData) {
   $.ajax({
     method: 'get',
     url: '/api/users',
     success: function(data) {
-      callback(data);
+      console.log('ajax data.user: ', data.user[0]);
+      console.log('data.user.username: ', data.user[0].username);
+      initData.username = data.user[0].username;
+      if (data.user[0].color) {
+        initData.color = data.user[0].color;
+      };
+      console.log('initData: ', initData);
+      initializePlayer(initData);
     }
   });
 };
