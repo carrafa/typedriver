@@ -11,14 +11,22 @@ Handlebars.registerHelper('wpm', function(sentence, time) {
   var words = getWordsInSentence(sentence);
   var num = convertToNum(time);
   wpm = words / num * 60
-  return wpm.toFixed(2)
+  if (isNaN(wpm)) {
+    return 0
+  } else {
+    return wpm.toFixed(2)
+  }
 });
 
 Handlebars.registerHelper('cpm', function(sentence, time) {
   var chars = sentence.length;
   var num = convertToNum(time);
   cpm = chars / num * 60;
-  return cpm.toFixed(2)
+  if (isNaN(cpm)) {
+    return 0
+  } else {
+    return cpm.toFixed(2)
+  }
 });
 
 
