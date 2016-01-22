@@ -168,9 +168,16 @@ ul{
   margin: 0 auto;
 }
 
+#again{
+  font-size: 2em;
+  color: crimson;
+}
+
+a#again{
+  text-decoration: none;
+}
+
 /* status window */
-
-
 
 #status-container{
   position: absolute;
@@ -208,6 +215,7 @@ ul{
   font-size: 100vh;
   width: 100%;
   top: 0;
+  z-index: 100;
 }
 
 #chat{
