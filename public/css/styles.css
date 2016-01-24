@@ -202,6 +202,7 @@ a#again{
 }
 
 /* ----------------------- chat window ----------------------- */
+/* status window */
 
 #chat-container{
   display: inline-block;
