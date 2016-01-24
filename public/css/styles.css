@@ -1,12 +1,15 @@
 body{
-  background-color: ghostwhite;
+  background-color: #677077;
   margin: 0;
-  text-align: center;
   font-family: 'Righteous', serif;
   min-width: 1000px;
 }
 
-/* header stuff */
+/* -----------------------  header stuff ----------------------- */
+header{
+  text-align: center;
+  font-size: 1.5em;
+}
 
 nav{
   position: absolute;
@@ -16,8 +19,13 @@ nav{
 #logout input{
   color: snow;
   background-color: black;
-  border: none;
+  border: 1px solid snow;;
 }
+
+#logout input:hover{
+  background-color: darkred;
+}
+
 nav *{
   margin-left: .5em;
 }
@@ -27,22 +35,32 @@ nav ul {
     margin-bottom: 0;
 }
 nav li {
-    line-height: 18px;
     display: inline-block;
+}
+
+nav li:last-child{
 }
 
 nav a{
   color: snow;
+  text-decoration: none;
+}
+
+nav a:hover{
+  color: dodgerblue;
 }
 
 input{
   width: 100%;
   color: black;
   font-size: 2em;
+  border: none;
+  border-radius: .1em;
+  padding-left: .1em;
 }
 
 header{
-  background-color: darkred;
+  background-color: firebrick;
   color: snow;
   margin: 0;
 }
@@ -66,8 +84,15 @@ ul{
   background-image: url('../images/check.png');
 }
 
+#race-clock{
+  position: absolute;
+  color: snow;
+  left: .5em;
+  font-size: 2em;
+}
 
-/*------ Log in modal -----*/
+
+/* ----------------------- log in modal ----------------------- */
 #modal {
   top: 0;
   left: 0;
@@ -99,23 +124,34 @@ ul{
   margin-top: 40px;
 }
 
-/* race track area */
+/* ----------------------- race track area ----------------------- */
+.main-container{
+  display: inline-block;
+  margin-top: 1em;
+  width: 80%;
+  min-width: 600px;
+  min-height: 400px;
+  vertical-align: top;
+}
+
+#text-box{
+  border: 2px solid black;
+  border-radius: .2em;
+}
 
 #sentence{
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 #ready{
-  position: absolute;
   font-size: 6em;
-  color: crimson;
+  color: firebrick;
   text-decoration: none;
   width: 100%;
   text-align: center;
-
 }
 
-/* race car! */
+/* ----------------------- race car! ----------------------- */
 
 .player{
   position: relative;
@@ -130,16 +166,11 @@ ul{
   padding-left: 40px;
 }
 
-/*race track!*/
-.container{
-  min-width: 600px;
-  padding-top: 2em;
-}
+/* ----------------------- race track! ----------------------- */
 
 #race-track-container{
   display: inline-block;
-  width: 90%;
-  float: right;
+  width: 100%;
 }
 
 #race-track{
@@ -156,57 +187,58 @@ ul{
   width: 40px;
 }
 
-#race-clock{
-  position: absolute;
-  color: snow;
-  left: .5em;
-  font-size: 2.5em;
-}
-
 #race-results{
   width: 40%;
   margin: 0 auto;
 }
 
 #again{
-  font-size: 2em;
-  color: crimson;
+  font-size: 4em;
+  color: firebrick;
 }
 
 a#again{
   text-decoration: none;
 }
 
-/* status window */
+/* ----------------------- chat window ----------------------- */
 
-#status-container{
-  position: absolute;
-  left: 1em;
-  background-color: dimgray;
-  margin-top: 10em;
-  margin-left: 10px;
+#chat-container{
+  display: inline-block;
+  margin-top: 1em;
+  margin-left: 1em;
   text-align: left;
+  width: 18%;
+}
 
+#chat-window{
+  border: 2px solid black;
   border-radius: 5px;
   font-weight: bold;
   padding: 5px;
-  width: 18%;
-  border: 2px solid black;
-  padding-bottom: -5px;
-}
-
-#status{
-  min-height: 200px;
-  max-height: 300px;
+  background-color: #c9c9c9;
+  min-height: 400px;
+  max-height: 500px;
   overflow: scroll;
+  margin-bottom: 0;
 }
 
-#status li:nth-child(even){
-  color: navy;
+#chat-input{
+  bottom: 0;
+  width: 100%;
+  font-size: 1em;
+  height: 1.5em;
+  border: 2px solid black;
 }
 
-#status li:nth-child(odd){
-  color: darkred;
+#chat-window li:nth-child(even){
+  color: dodgerblue;
+  margin: 0;
+}
+
+#chat-window li:nth-child(odd){
+  color: firebrick;
+  margin: 0;
 }
 
 #timer{
@@ -216,18 +248,10 @@ a#again{
   width: 100%;
   top: 0;
   z-index: 100;
+  text-align: center;
 }
 
-#chat{
-  position: absolute;
-  bottom: 0;
-  width: 90%;
-  font-size: 1em;
-  height: 1.5em;
-  margin-top: 1em;
-  bottom: -3em;
-  border: 2px solid black;
-}
+
 
 #status li{
   margin: 0;
@@ -237,7 +261,7 @@ a#again{
   margin: 0;
 }
 
-/* search bar hidden on every page except stats */
+/* ----------------------- search bar hidden on every page except stats ----------------------- */
 #search{
   display: none;
 }

@@ -8,12 +8,12 @@ th:hover{
 
 #search{
   position: absolute;
-  left: .5em;
-  top: 1em;
   display: inline-block;
+  left: .5em;
+  top: .7em;
   width: 10em;
   font-size: 1em;
-  height: 2em;
+  height: 1.5em;
   border: none;
   margin: 0;
 }

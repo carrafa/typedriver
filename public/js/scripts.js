@@ -123,10 +123,10 @@ function getUserAJAX(initData) {
 
 // chat stuff
 function chatHandler() {
-  $('#chat').on('keydown', function(e) {
+  $('#chat-input').on('keydown', function(e) {
     if (e.keyCode === 13) {
       e.preventDefault();
-      var $textField = $('#chat');
+      var $textField = $('#chat-input');
       var message = $textField.val();
 
       data = {
@@ -150,7 +150,7 @@ function renderChat(data) {
   var $message = $('<div>').addClass('message').text(data.message);
   $message.prepend($username);
   var $li = $('<li>').append($message);
-  $('#status').append($li);
+  $('#chat-window').append($li);
 }
 
 function isRaceOver(raceId) {
@@ -190,7 +190,7 @@ function globalListener() { // listens for socket messages
 
   socket.on('global chat', function(data) {
     renderChat(data);
-    var $chatWindow = $('#status');
+    var $chatWindow = $('#chat-window');
     $chatWindow.scrollTop($chatWindow.prop("scrollHeight"));
   });
 

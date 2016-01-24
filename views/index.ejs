@@ -13,25 +13,25 @@
 
     <% include ./partials/header %>
 
-    <div id="status-container">
-      <ul id="status">
+    <div id="chat-container">
+      <ul id="chat-window">
         <li>waiting for more players</li>
       </ul>
-      <input type="text" id="chat"></input>
+      <input type="text" id="chat-input"></input>
     </div>
 
-    <div class="container">
-    <input id="text-box" placeholder="start typing here! do it fast!"></input>
-    <div id="sentence">type the sentence that appears here as fast as you can.  also do it accurately.</div>
-    <div id="container">
-      <div id="race-track-container">
-        <a href="#" id="ready">ready?</a>
-        <div id="race-track"></div>
-        <div id="finish-line"></div>
-      </div>
-      <div id="race-results"></div>
+    <div class="main-container">
+
+      <input id="text-box" placeholder="start typing here! do it fast!"></input>
+      <div id="sentence">type the sentence that appears here as fast as you can.  also do it accurately.</div>
+      <a href="#" id="ready">ready?</a>
+        <div id="race-track-container">
+          <div id="race-track"></div>
+          <div id="finish-line"></div>
+        </div>
+        <div id="race-results"></div>
+
     </div>
-  </div>
 
   <script src="/socket.io/socket.io.js" charset="utf-8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
