@@ -1,3 +1,7 @@
+.profile{
+  text-align: center;
+}
+
 .username{
   font-family: 'Bangers', cursive;
   font-size: 10em;
@@ -10,6 +14,11 @@
 
 #color-form #color{
   height: 100px;
+}
+
+#color-form #submit{
+  background-color: firebrick;
+  color: snow;
 }
 
 a{

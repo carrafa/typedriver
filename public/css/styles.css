@@ -2,7 +2,7 @@ body{
   background-color: #677077;
   margin: 0;
   font-family: 'Righteous', serif;
-  min-width: 1000px;
+  /*min-width: 1000px;*/
 }
 
 /* -----------------------  header stuff ----------------------- */
@@ -128,7 +128,7 @@ ul{
 .main-container{
   display: inline-block;
   margin-top: 1em;
-  width: 80%;
+  width: 78%;
   min-width: 600px;
   min-height: 400px;
   vertical-align: top;

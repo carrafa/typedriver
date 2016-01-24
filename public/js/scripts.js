@@ -55,7 +55,7 @@ function setKeyboardListener() { // listens for keyboard input
 
 // stop the cheaters!!
 function pasteStopper() {
-  $('input').bind('paste', function(e) {
+  $('input#text-box').bind('paste', function(e) {
     console.log('paste');
     e.preventDefault();
     $(this).val('(╯°□°）╯︵ ┻━┻ CHEATER!!!!!!!!!!');

@@ -36,6 +36,7 @@ function startRace(data) { //starts the countdown, then starts the race
       clearInterval(intervalID);
       $('#sentence').text(data.sentence);
       startRaceClock();
+      $('#text-box').focus();
       countdown = 5;
     }
     countdown--;
