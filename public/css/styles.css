@@ -262,6 +262,6 @@ a#again{
 }
 
 /* ----------------------- search bar hidden on every page except stats ----------------------- */
-#search{
+.stats-filter{
   display: none;
 }

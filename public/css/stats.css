@@ -6,14 +6,26 @@ th:hover{
   cursor: pointer;
 }
 
-#search{
+.stats-filter{
   position: absolute;
   display: inline-block;
   left: .5em;
   top: .7em;
+}
+
+#search{
   width: 10em;
   font-size: 1em;
   height: 1.5em;
   border: none;
   margin: 0;
+}
+
+#dnf-filter{
+  display: inline-block;
+  height: 3em;
+  border-radius: 1em;
+  background-color: black;
+  border: 1px solid snow;
+  color: snow;
 }

@@ -29,6 +29,23 @@ Handlebars.registerHelper('cpm', function(sentence, time) {
   }
 });
 
+function DNFFilterHandler() {
+  $('#dnf-filter').on('click', function() {
+    var bg = $(this).css("background-color")
+    console.log('did i hide it?')
+    $('.time').each(function() {
+      if ($(this).text() === "DNF") {
+        $(this).parent().toggle()
+      };
+    });
+    if (bg === 'rgb(0, 0, 0)') {
+      $(this).css('background-color', 'rgb(50, 50, 50)');
+    }
+    if (bg === 'rgb(50, 50, 50)') {
+      $(this).css('background-color', 'rgb(0, 0, 0)');
+    }
+  });
+};
 
 function convertToNum(numString) {
   var array = numString.split(":");
@@ -75,4 +92,5 @@ function searchFormHandler() {
 $(function() {
   getFinishers();
   searchFormHandler();
+  DNFFilterHandler();
 });
