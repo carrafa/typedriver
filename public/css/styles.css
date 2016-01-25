@@ -11,6 +11,10 @@ header{
   font-size: 1.5em;
 }
 
+.logo{
+  text-shadow: .07em .07em .01em black;
+}
+
 nav{
   position: absolute;
   top: .5em;
@@ -33,6 +37,7 @@ nav ul {
     list-style: none outside none;
     display: block;
     margin-bottom: 0;
+
 }
 nav li {
     display: inline-block;
@@ -44,6 +49,7 @@ nav li:last-child{
 nav a{
   color: snow;
   text-decoration: none;
+  text-shadow: .07em .07em .01em black;
 }
 
 nav a:hover{
@@ -89,6 +95,7 @@ ul{
   color: snow;
   left: .5em;
   font-size: 2em;
+  text-shadow: .07em .07em .01em black;
 }
 
 
@@ -222,6 +229,7 @@ a#again{
   max-height: 500px;
   overflow: scroll;
   margin-bottom: 0;
+  box-shadow: .1em .1em .1em black;
 }
 
 #chat-input{
@@ -230,6 +238,7 @@ a#again{
   font-size: 1em;
   height: 1.5em;
   border: 2px solid black;
+  box-shadow: .1em .1em .1em black;
 }
 
 #chat-window li:nth-child(even){
