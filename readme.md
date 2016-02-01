@@ -21,7 +21,7 @@ The multiplayer aspect of this game was implemented using Socket.io.  As users c
 
 ![leaderboard](./md_images/leaderboard.png)
 
-As soon as a player crosses the finish line, an object is sent to the server with all of the information about the race, and the server saves it to the finishers database.  This database is a publicly accessible
+When a player crosses the finish line, an object is sent to the server with all of the information about the race, and the server saves it to the finishers database.  This database is a publicly accessible for all the world to see.
 
 You can also filter out the sentences to find all the ones that contain the word lick.  Uh, I guess you could do other words too.  BUT WHY??
 
