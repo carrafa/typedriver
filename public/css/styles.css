@@ -232,6 +232,10 @@ a#again{
   box-shadow: .1em .1em .1em black;
 }
 
+#chat-window::-webkit-scrollbar {
+  display: none;
+}
+
 #chat-input{
   bottom: 0;
   width: 100%;

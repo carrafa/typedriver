@@ -6,7 +6,7 @@ var socketIo = require('socket.io');
 var io = socketIo(server);
 
 // database
-var mongoPath = process.env.MONGOLAB_URI || 'mongodb://localhost/typist'
+var mongoPath = process.env.MONGOLAB_URI || 'mongodb://localhost/typist';
 var mongoose = require('mongoose');
 mongoose.connect(mongoPath);
 
